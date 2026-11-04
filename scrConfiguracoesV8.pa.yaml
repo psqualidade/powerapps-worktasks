@@ -1,0 +1,550 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrConfiguracoesV8:
+    Properties:
+      Fill: =RGBA(244,248,245,1)
+      OnVisible: |-
+        =Set(varErroAuditoria, Blank());
+        IfError(
+            Refresh(tbLogAtividades),
+            Set(varErroAuditoria, FirstError.Message)
+        );
+        If(
+            IsBlank(varErroAuditoria),
+            ClearCollect(colAuditoriaV8, tbLogAtividades),
+            Clear(colAuditoriaV8);
+            Notify("Não foi possível consultar a auditoria: " & varErroAuditoria, NotificationType.Error)
+        )
+    Children:
+      - cntMenuV7CfgV8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(0,60,39,1)
+            Height: =Parent.Height
+            Width: =230
+          Children:
+            - imgFundoMenuV7CfgV8:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =370
+                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  ImagePosition: =ImagePosition.Fill
+                  Width: =Parent.Width
+                  Y: =398
+            - imgLogoV7CfgV8:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =99
+                  Image: =PowerApps_Logo_Branca_Referencia
+                  Width: =230
+            - lbMenuLegendaV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(181,218,195,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =24
+                  Size: =9
+                  Text: ="NAVEGAÇÃO"
+                  Width: =192
+                  X: =20
+                  Y: =154
+            - lbNavInicioV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⌂   Início"
+                  Width: =210
+                  X: =10
+                  Y: =190
+            - lbNavRegistroV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrRegistroV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="▤   Registro de Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =242
+            - lbNavGerenciarV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="✎   Gerenciar Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =294
+            - lbNavRelatoriosV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrRelatoriosV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="▥   Relatórios"
+                  Width: =210
+                  X: =10
+                  Y: =346
+            - lbNavConfigV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,158,89,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =44
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⚙   Configurações"
+                  Width: =210
+                  X: =10
+                  Y: =398
+            - lbMenuFooterV7CfgV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(210,233,218,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =23
+                  Size: =8
+                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Visible: =false
+                  Width: =200
+                  X: =17
+                  Y: =Parent.Height - 33
+      - cntConteudoV7CfgV8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(244,248,245,1)
+            Height: =Parent.Height
+            Width: =Parent.Width - 230
+            X: =230
+          Children:
+            - cntTopoV7CfgV8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =92
+                  Width: =Parent.Width
+                Children:
+                  - lbTituloTopoV7CfgV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Size: =21
+                        Text: ="Configurações e auditoria"
+                        Width: =Parent.Width - 350
+                        X: =27
+                        Y: =15
+                  - lbSubTopoV7CfgV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =10.5
+                        Text: ="Acesso corporativo, conexões e histórico de operações"
+                        Width: =Parent.Width - 370
+                        X: =28
+                        Y: =55
+                  - lbContaTopoV7CfgV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =27
+                        Size: =11
+                        Text: =User().FullName
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =16
+                  - lbContaTipoV7CfgV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =9
+                        Text: =User().Email
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =43
+                  - btnAvatarV8ConfiguracoesV8:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =RGBA(224,238,230,1)
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(0,107,60,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Bold
+                        Height: =43
+                        HoverFill: =RGBA(0,107,60,1)
+                        PressedFill: =RGBA(0,107,60,1)
+                        RadiusBottomLeft: =24
+                        RadiusBottomRight: =24
+                        RadiusTopLeft: =24
+                        RadiusTopRight: =24
+                        Size: =12
+                        Text: =Upper(Left(User().FullName, 1) & Left(Last(Split(User().FullName, " ")).Value, 1))
+                        Tooltip: =User().FullName & " | " & User().Email
+                        Width: =43
+                        X: =Parent.Width - 65
+                        Y: =22
+            - lbCfgSecV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(0,158,89,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =27
+                  Size: =10
+                  Text: ="PAINEL DE CONTROLE"
+                  Width: =Parent.Width - 50
+                  X: =25
+                  Y: =107
+            - cntCfgConnV8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =115
+                  Width: =(Parent.Width - 62) / 2
+                  X: =24
+                  Y: =143
+                Children:
+                  - lbCfgConnTitleV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =29
+                        Size: =10
+                        Text: ="FONTES DE DADOS"
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =14
+                  - lbCfgConnNameV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =30
+                        Text: ="Atividades   •   Tarefas   •   Auditoria"
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =49
+                  - lbCfgConnSubV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =22
+                        Size: =9
+                        Text: ="Excel Online (Business) / SharePoint"
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =82
+            - cntCfgContaV8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =115
+                  Width: =(Parent.Width - 62) / 2
+                  X: =38 + (Parent.Width - 62) / 2
+                  Y: =143
+                Children:
+                  - lbCfgContaTitleV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =29
+                        Size: =10
+                        Text: ="CONTA CONECTADA"
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =14
+                  - lbCfgContaNomeV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =30
+                        Text: =User().FullName
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =49
+                  - lbCfgContaMailV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =22
+                        Size: =9
+                        Text: =User().Email
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =82
+            - cntCfgHistoricoV8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =Parent.Height - 302
+                  Width: =Parent.Width - 48
+                  X: =24
+                  Y: =280
+                Children:
+                  - lbHistTituloV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =39
+                        Size: =17
+                        Text: ="Histórico de operações"
+                        Width: =Parent.Width - 210
+                        X: =20
+                        Y: =13
+                  - lbHistHelpV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =10
+                        Text: ="Inclusões, alterações e exclusões registradas pelo aplicativo"
+                        Width: =Parent.Width - 42
+                        X: =21
+                        Y: =53
+                  - lbHistAtualizarV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =RGBA(0,158,89,1)
+                        Fill: =RGBA(238,245,241,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =38
+                        OnSelect: |-
+                          =Set(varErroAuditoria, Blank());
+                          IfError(
+                              Refresh(tbLogAtividades),
+                              Set(varErroAuditoria, FirstError.Message)
+                          );
+                          If(
+                              IsBlank(varErroAuditoria),
+                              ClearCollect(colAuditoriaV8, tbLogAtividades),
+                              Notify("Falha ao atualizar o histórico: " & varErroAuditoria, NotificationType.Error)
+                          )
+                        Size: =10
+                        Text: ="⟳   Atualizar"
+                        Width: =144
+                        X: =Parent.Width - 163
+                        Y: =16
+                  - cntHistCabV8:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        Fill: =RGBA(238,245,241,1)
+                        Height: =41
+                        Width: =Parent.Width - 34
+                        X: =17
+                        Y: =91
+                      Children:
+                        - lbHOpV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =25
+                              Size: =9
+                              Text: ="OPERAÇÃO"
+                              Width: =Parent.Width * 0.15
+                              X: =14
+                              Y: =9
+                        - lbHAlvoV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =25
+                              Size: =9
+                              Text: ="REGISTRO"
+                              Width: =Parent.Width * 0.31
+                              X: =Parent.Width * 0.17
+                              Y: =9
+                        - lbHUserV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =25
+                              Size: =9
+                              Text: ="USUÁRIO"
+                              Width: =Parent.Width * 0.27
+                              X: =Parent.Width * 0.49
+                              Y: =9
+                        - lbHHoraV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =25
+                              Size: =9
+                              Text: ="DATA/HORA"
+                              Width: =Parent.Width * 0.19
+                              X: =Parent.Width * 0.78
+                              Y: =9
+                  - lbAuditoriaVaziaV8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =66
+                        Size: =11
+                        Text: ="Sem operações registradas. O histórico será preenchido quando as ações de gravação estiverem conectadas ao log."
+                        Visible: =IsEmpty(colAuditoriaV8)
+                        Width: =Parent.Width - 50
+                        X: =25
+                        Y: =180
+                  - galHistoricoV7V8:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        Fill: =RGBA(255,255,255,1)
+                        Height: =Parent.Height - 151
+                        Items: =SortByColumns(Filter(colAuditoriaV8, !IsBlank(LogID)), "DataHora", SortOrder.Descending)
+                        TemplateSize: =64
+                        Width: =Parent.Width - 32
+                        X: =16
+                        Y: =138
+                      Children:
+                        - lbHistFundoV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Fill: =RGBA(248,251,249,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =58
+                              Size: =10
+                              Text: =""
+                              Width: =Parent.TemplateWidth - 6
+                              X: =3
+                              Y: =2
+                        - lbHistOpV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =If(ThisItem.Operacao = "Excluir", RGBA(175,54,63,1), RGBA(0,73,43,1))
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Size: =10
+                              Text: =Coalesce(Text(ThisItem.Operacao), "—")
+                              Width: =Parent.TemplateWidth * 0.15
+                              X: =16
+                              Y: =10
+                        - lbHistRegistroV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =43
+                              Size: =9.5
+                              Text: =Coalesce(Text(ThisItem.Detalhes), "—")
+                              Width: =Parent.TemplateWidth * 0.31
+                              X: =Parent.TemplateWidth * 0.17
+                              Y: =8
+                        - lbHistUsuarioV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              Size: =9.5
+                              Text: =Coalesce(Text(ThisItem.Usuario), "—")
+                              Width: =Parent.TemplateWidth * 0.27
+                              X: =Parent.TemplateWidth * 0.49
+                              Y: =10
+                        - lbHistQuandoV8:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(100,117,109,1)
+                              Font: =Font.'Segoe UI'
+                              Size: =9.5
+                              Text: |
+                                =
+                                With(
+                                    {
+                                        _valor: Text(ThisItem.DataHora)
+                                    },
+                                    If(
+                                        IsBlank(_valor),
+                                        "—",
+                                        IfError(
+                                            If(
+                                                IsMatch(_valor, "^[0-9]+([.,][0-9]+)?$"),
+                                                Text(
+                                                    DateAdd(
+                                                        DateValue("30/12/1899", "pt-BR"),
+                                                        Value(_valor, "en-US") * 86400,
+                                                        TimeUnit.Seconds
+                                                    ),
+                                                    "dd/mm/yyyy hh:mm",
+                                                    "pt-BR"
+                                                ),
+                                                Text(
+                                                    DateTimeValue(_valor, "pt-BR"),
+                                                    "dd/mm/yyyy hh:mm",
+                                                    "pt-BR"
+                                                )
+                                            ),
+                                            _valor
+                                        )
+                                    )
+                                )
+                              Width: =Parent.TemplateWidth * 0.19
+                              X: =Parent.TemplateWidth * 0.78
+                              Y: =10

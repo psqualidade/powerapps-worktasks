@@ -1,0 +1,1033 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrKanbanTarefasV8:
+    Properties:
+      Fill: =RGBA(244,248,245,1)
+      OnVisible: =Set(varRelModo,"Kanban");Set(varMenuRelatoriosAberto,true);Refresh(tbTarefas);ClearCollect(colKanTarefas,tbTarefas);ClearCollect(colKanResponsaveis,{Value:"Todos"});Collect(colKanResponsaveis,Distinct(Filter(colKanTarefas,!IsBlank(Assigned)),Assigned));Refresh(tbAtividades);ClearCollect(colKanAtividades,tbAtividades)
+    Children:
+      - cntMenuV7RelV8KanT:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(0,60,39,1)
+            Height: =Parent.Height
+            Width: =230
+          Children:
+            - imgFundoMenuV7RelV8KanT:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =370
+                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  ImagePosition: =ImagePosition.Fill
+                  Width: =Parent.Width
+                  Y: =398
+            - imgLogoV7RelV8KanT:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =99
+                  Image: =PowerApps_Logo_Branca_Referencia
+                  Width: =230
+            - lbMenuLegendaV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(181,218,195,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =24
+                  Size: =9
+                  Text: ="NAVEGAÇÃO"
+                  Width: =192
+                  X: =20
+                  Y: =154
+            - lbNavInicioV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⌂   Início"
+                  Width: =210
+                  X: =10
+                  Y: =190
+            - lbNavRegistroV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrRegistroV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="▤   Registro de Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =242
+            - lbNavGerenciarV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="✎   Gerenciar Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =294
+            - lbNavRelatoriosV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(varMenuRelatoriosAberto, RGBA(0,158,89,1), RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =44
+                  OnSelect: =Set(varMenuRelatoriosAberto, !Coalesce(varMenuRelatoriosAberto,false))
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: =If(varMenuRelatoriosAberto,"▾   Relatórios","▸   Relatórios")
+                  Width: =210
+                  X: =10
+                  Y: =346
+            - lbNavConfigV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrConfiguracoesV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⚙   Configurações"
+                  Width: =210
+                  X: =10
+                  Y: =lbNavRelatoriosV7RelV8KanT.Y + 52 + If(varMenuRelatoriosAberto, 88, 0)
+            - lbMenuFooterV7RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(210,233,218,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =23
+                  Size: =8
+                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Visible: =false
+                  Width: =200
+                  X: =17
+                  Y: =Parent.Height - 33
+            - lbSubRel0RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  Height: =38
+                  OnSelect: =Navigate(scrRelatoriosV8,ScreenTransition.Fade)
+                  Size: =12
+                  Text: ="  •   Kanban de Atividades"
+                  Visible: =varMenuRelatoriosAberto
+                  Width: =Parent.Width - 47
+                  X: =34
+                  Y: =lbNavRelatoriosV7RelV8KanT.Y + 47
+            - lbSubRel1RelV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  Height: =38
+                  OnSelect: =Navigate(scrKanbanTarefasV8,ScreenTransition.Fade)
+                  Size: =12
+                  Text: ="  •   Kanban de Tarefas"
+                  Visible: =varMenuRelatoriosAberto
+                  Width: =Parent.Width - 47
+                  X: =34
+                  Y: =lbNavRelatoriosV7RelV8KanT.Y + 88
+      - cntConteudoV7RelV8KanT:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(244,248,245,1)
+            Height: =Parent.Height
+            Width: =Parent.Width - 230
+            X: =230
+          Children:
+            - cntTopoV7RelV8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =92
+                  Width: =Parent.Width
+                Children:
+                  - lbTituloTopoV7RelV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Size: =21
+                        Text: ="Kanban de tarefas"
+                        Width: =Parent.Width - 350
+                        X: =27
+                        Y: =15
+                  - lbSubTopoV7RelV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =10.5
+                        Text: ="Acompanhe as tarefas por status e responsável"
+                        Width: =Parent.Width - 370
+                        X: =28
+                        Y: =55
+                  - lbContaTopoV7RelV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =27
+                        Size: =11
+                        Text: =User().FullName
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =16
+                  - lbContaTipoV7RelV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =9
+                        Text: =User().Email
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =43
+                  - btnAvatarV8RelatoriosV8KanT:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =RGBA(224,238,230,1)
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(0,107,60,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Bold
+                        Height: =43
+                        HoverFill: =RGBA(0,107,60,1)
+                        PressedFill: =RGBA(0,107,60,1)
+                        RadiusBottomLeft: =24
+                        RadiusBottomRight: =24
+                        RadiusTopLeft: =24
+                        RadiusTopRight: =24
+                        Size: =12
+                        Text: =Upper(Left(User().FullName, 1) & Left(Last(Split(User().FullName, " ")).Value, 1))
+                        Tooltip: =User().FullName & " | " & User().Email
+                        Width: =43
+                        X: =Parent.Width - 65
+                        Y: =22
+            - lbRelTituloSecV8KanT:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(0,158,89,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =29
+                  Size: =10
+                  Text: ="PAINEL OPERACIONAL"
+                  Width: =Parent.Width - 50
+                  X: =25
+                  Y: =107
+            - cntRelFiltrosV7V8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =99
+                  Width: =Parent.Width - 48
+                  X: =24
+                  Y: =145
+                Children:
+                  - lbFiltroNomeV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =22
+                        Size: =9
+                        Text: ="RESPONSÁVEL"
+                        Width: =260
+                        X: =18
+                        Y: =11
+                  - ddlRelPessoaV7V8KanT:
+                      Control: Classic/DropDown@2.3.1
+                      Properties:
+                        Default: ="Todos"
+                        Height: =42
+                        Items: =colKanResponsaveis
+                        Items.Value: =Value
+                        Width: =300
+                        X: =18
+                        Y: =39
+                  - lbRelLimparV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =RGBA(0,158,89,1)
+                        Fill: =RGBA(238,245,241,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =35
+                        OnSelect: =Reset(ddlRelPessoaV7V8KanT)
+                        Size: =10
+                        Text: ="Limpar"
+                        Width: =90
+                        X: =329
+                        Y: =43
+                  - lbRelKanbanV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =If(varRelModo = "Kanban", RGBA(255,255,255,1), RGBA(0,73,43,1))
+                        Fill: =If(varRelModo = "Kanban", RGBA(0,158,89,1), RGBA(238,245,241,1))
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =42
+                        OnSelect: =Set(varRelModo, "Kanban")
+                        Size: =11
+                        Text: ="▥  Kanban"
+                        Width: =118
+                        X: =Parent.Width - 266
+                        Y: =39
+                  - lbRelListaV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =If(varRelModo = "Lista", RGBA(255,255,255,1), RGBA(0,73,43,1))
+                        Fill: =If(varRelModo = "Lista", RGBA(0,158,89,1), RGBA(238,245,241,1))
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =42
+                        OnSelect: =Set(varRelModo, "Lista")
+                        Size: =11
+                        Text: ="☷  Lista"
+                        Width: =118
+                        X: =Parent.Width - 139
+                        Y: =39
+            - cntRelColunaBkV8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(238,245,241,1)
+                  Height: =Parent.Height - 280
+                  Visible: =varRelModo = "Kanban"
+                  Width: =(Parent.Width - 74) / 3
+                  X: =24 + 0 * ((Parent.Width - 74) / 3 + 13)
+                  Y: =258
+                Children:
+                  - lbFundoCabBkV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Fill: =RGBA(255,255,255,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =12
+                        Text: =""
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =8
+                  - lbFaixaBkV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(116,135,126,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =10
+                        Text: =""
+                        Width: =6
+                        X: =8
+                        Y: =8
+                  - lbNomeStatusBkV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Size: =12
+                        Text: ="Backlog"
+                        Width: =Parent.Width - 100
+                        X: =23
+                        Y: =14
+                  - lbContagemBkV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(116,135,126,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        Size: =12
+                        Text: =With({r:Filter(colKanTarefas,!IsBlank(TaskID) && Status="Backlog" && (ddlRelPessoaV7V8KanT.Selected.Value="Todos" || Assigned=ddlRelPessoaV7V8KanT.Selected.Value))},Text(CountRows(r)) & " | " & Text(Sum(r,Coalesce(EstimatedHoras,0)),"0.#") & " h")
+                        Width: =Parent.Width * 0.43
+                        X: =Parent.Width - Self.Width - 14
+                        Y: =16
+                  - galColBkV8KanT:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        Fill: =RGBA(238,245,241,1)
+                        Height: =Parent.Height - 83
+                        Items: =SortByColumns(Filter(colKanTarefas, !IsBlank(TaskID) && Status = "Backlog" && (ddlRelPessoaV7V8KanT.Selected.Value = "Todos" || Assigned = ddlRelPessoaV7V8KanT.Selected.Value)), "CriadoEm", SortOrder.Descending)
+                        TemplatePadding: =6
+                        TemplateSize: =150
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =70
+                      Children:
+                        - lbCardBaseBkV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Fill: =RGBA(255,255,255,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =lbCardDetalheBkV8KanT.Y + lbCardDetalheBkV8KanT.Height + 7
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =12
+                              Text: =""
+                              Width: =Parent.TemplateWidth - 10
+                              X: =3
+                              Y: =3
+                        - lbCardTitleBkV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =43
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =11.2
+                              Text: =ThisItem.TituloTarefa
+                              Width: =Parent.TemplateWidth - 35
+                              X: =15
+                              Y: =If(lbKanAtividadeBk.Visible,lbKanAtividadeBk.Y + lbKanAtividadeBk.Height + 4,12)
+                        - lbCardPessoaBkV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(100,117,109,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =20
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: =Coalesce(ThisItem.Assigned,"Sem responsável")
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardTitleBkV8KanT.Y + lbCardTitleBkV8KanT.Height + 4
+                        - lbCardDetalheBkV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(116,135,126,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =24
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: |-
+                                =ThisItem.Priority & " - " &
+                                Text(
+                                    Coalesce(
+                                        IfError(Value(ThisItem.EstimatedHoras), 0),
+                                        0
+                                    ),
+                                    "0.#"
+                                ) & " h • " &
+                                IfError(
+                                    With(
+                                        {dataOriginal: Trim(Text(ThisItem.DueDate))},
+                                        If(
+                                            IsBlank(dataOriginal),
+                                            "",
+                                            If(
+                                                IsMatch(dataOriginal, "^[0-9]{5}(\.[0-9]+)?$"),
+                                                Text(
+                                                    DateAdd(
+                                                        Date(1899, 12, 30),
+                                                        RoundDown(
+                                                            Value(dataOriginal, "en-US"),
+                                                            0
+                                                        ),
+                                                        TimeUnit.Days
+                                                    ),
+                                                    "dd/mm/yyyy"
+                                                ),
+                                                Text(
+                                                    DateTimeValue(dataOriginal, "pt-BR"),
+                                                    "dd/mm/yyyy"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "Data inválida"
+                                )
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardPessoaBkV8KanT.Y + lbCardPessoaBkV8KanT.Height + 4
+                        - lbKanAtividadeBk:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(11,107,58,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =18
+                              Size: =9
+                              Text: =If(IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"",Trim(First(Split(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))," | ")).Value))
+                              Tooltip: =Coalesce(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"")
+                              Visible: =!IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))
+                              Width: =Parent.TemplateWidth - 32
+                              Wrap: =false
+                              X: =13
+                              Y: =8
+                  - lbKanVazioBk:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =RGBA(95,111,102,1)
+                        Height: =35
+                        Text: ="Nenhuma tarefa neste status"
+                        Visible: =CountRows(galColBkV8KanT.AllItems)=0
+                        Width: =Parent.Width - 30
+                        X: =15
+                        Y: =Parent.Height / 2
+            - cntRelColunaPrV8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(236,243,251,1)
+                  Height: =Parent.Height - 280
+                  Visible: =varRelModo = "Kanban"
+                  Width: =(Parent.Width - 74) / 3
+                  X: =24 + 1 * ((Parent.Width - 74) / 3 + 13)
+                  Y: =258
+                Children:
+                  - lbFundoCabPrV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Fill: =RGBA(255,255,255,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =12
+                        Text: =""
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =8
+                  - lbFaixaPrV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(45,115,192,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =10
+                        Text: =""
+                        Width: =6
+                        X: =8
+                        Y: =8
+                  - lbNomeStatusPrV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Size: =12
+                        Text: ="In Progress"
+                        Width: =Parent.Width - 100
+                        X: =23
+                        Y: =14
+                  - lbContagemPrV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(45,115,192,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        Size: =12
+                        Text: =With({r:Filter(colKanTarefas,!IsBlank(TaskID) && Status="In Progress" && (ddlRelPessoaV7V8KanT.Selected.Value="Todos" || Assigned=ddlRelPessoaV7V8KanT.Selected.Value))},Text(CountRows(r)) & " | " & Text(Sum(r,Coalesce(EstimatedHoras,0)),"0.#") & " h")
+                        Width: =Parent.Width * 0.43
+                        X: =Parent.Width - Self.Width - 14
+                        Y: =16
+                  - galColPrV8KanT:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        Fill: =RGBA(236,243,251,1)
+                        Height: =Parent.Height - 83
+                        Items: =SortByColumns(Filter(colKanTarefas, !IsBlank(TaskID) && Status = "In Progress" && (ddlRelPessoaV7V8KanT.Selected.Value = "Todos" || Assigned = ddlRelPessoaV7V8KanT.Selected.Value)), "CriadoEm", SortOrder.Descending)
+                        TemplatePadding: =6
+                        TemplateSize: =150
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =70
+                      Children:
+                        - lbCardBasePrV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Fill: =RGBA(255,255,255,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =lbCardDetalhePrV8KanT.Y + lbCardDetalhePrV8KanT.Height + 7
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =12
+                              Text: =""
+                              Width: =Parent.TemplateWidth - 10
+                              X: =3
+                              Y: =3
+                        - lbCardTitlePrV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =43
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =11.2
+                              Text: =ThisItem.TituloTarefa
+                              Width: =Parent.TemplateWidth - 35
+                              X: =15
+                              Y: =If(lbKanAtividadePr.Visible,lbKanAtividadePr.Y + lbKanAtividadePr.Height + 4,12)
+                        - lbCardPessoaPrV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(100,117,109,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =20
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: =Coalesce(ThisItem.Assigned,"Sem responsável")
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardTitlePrV8KanT.Y + lbCardTitlePrV8KanT.Height + 4
+                        - lbCardDetalhePrV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(45,115,192,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =24
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: |-
+                                =ThisItem.Priority & " - " &
+                                Text(
+                                    Coalesce(
+                                        IfError(Value(ThisItem.EstimatedHoras), 0),
+                                        0
+                                    ),
+                                    "0.#"
+                                ) & " h • " &
+                                IfError(
+                                    With(
+                                        {dataOriginal: Trim(Text(ThisItem.DueDate))},
+                                        If(
+                                            IsBlank(dataOriginal),
+                                            "",
+                                            If(
+                                                IsMatch(dataOriginal, "^[0-9]{5}(\.[0-9]+)?$"),
+                                                Text(
+                                                    DateAdd(
+                                                        Date(1899, 12, 30),
+                                                        RoundDown(
+                                                            Value(dataOriginal, "en-US"),
+                                                            0
+                                                        ),
+                                                        TimeUnit.Days
+                                                    ),
+                                                    "dd/mm/yyyy"
+                                                ),
+                                                Text(
+                                                    DateTimeValue(dataOriginal, "pt-BR"),
+                                                    "dd/mm/yyyy"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "Data inválida"
+                                )
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardPessoaPrV8KanT.Y + lbCardPessoaPrV8KanT.Height + 4
+                        - lbKanAtividadePr:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(11,107,58,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =18
+                              Size: =9
+                              Text: =If(IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"",Trim(First(Split(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))," | ")).Value))
+                              Tooltip: =Coalesce(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"")
+                              Visible: =!IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))
+                              Width: =Parent.TemplateWidth - 32
+                              Wrap: =false
+                              X: =13
+                              Y: =8
+                  - lbKanVazioPr:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =RGBA(95,111,102,1)
+                        Height: =35
+                        Text: ="Nenhuma tarefa neste status"
+                        Visible: =CountRows(galColPrV8KanT.AllItems)=0
+                        Width: =Parent.Width - 30
+                        X: =15
+                        Y: =Parent.Height / 2
+            - cntRelColunaDnV8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(238,245,241,1)
+                  Height: =Parent.Height - 280
+                  Visible: =varRelModo = "Kanban"
+                  Width: =(Parent.Width - 74) / 3
+                  X: =24 + 2 * ((Parent.Width - 74) / 3 + 13)
+                  Y: =258
+                Children:
+                  - lbFundoCabDnV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Fill: =RGBA(255,255,255,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =12
+                        Text: =""
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =8
+                  - lbFaixaDnV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(0,158,89,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =52
+                        Size: =10
+                        Text: =""
+                        Width: =6
+                        X: =8
+                        Y: =8
+                  - lbNomeStatusDnV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =34
+                        Size: =12
+                        Text: ="Done"
+                        Width: =Parent.Width - 100
+                        X: =23
+                        Y: =14
+                  - lbContagemDnV8KanT:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(0,158,89,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =32
+                        Size: =12
+                        Text: =With({r:Filter(colKanTarefas,!IsBlank(TaskID) && Status="Done" && (ddlRelPessoaV7V8KanT.Selected.Value="Todos" || Assigned=ddlRelPessoaV7V8KanT.Selected.Value))},Text(CountRows(r)) & " | " & Text(Sum(r,Coalesce(EstimatedHoras,0)),"0.#") & " h")
+                        Width: =Parent.Width * 0.43
+                        X: =Parent.Width - Self.Width - 14
+                        Y: =16
+                  - galColDnV8KanT:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        Fill: =RGBA(238,245,241,1)
+                        Height: =Parent.Height - 83
+                        Items: =SortByColumns(Filter(colKanTarefas, !IsBlank(TaskID) && Status = "Done" && (ddlRelPessoaV7V8KanT.Selected.Value = "Todos" || Assigned = ddlRelPessoaV7V8KanT.Selected.Value)), "CriadoEm", SortOrder.Descending)
+                        TemplatePadding: =6
+                        TemplateSize: =150
+                        Width: =Parent.Width - 16
+                        X: =8
+                        Y: =70
+                      Children:
+                        - lbCardBaseDnV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Fill: =RGBA(255,255,255,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =lbCardDetalheDnV8KanT.Y + lbCardDetalheDnV8KanT.Height + 7
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =12
+                              Text: =""
+                              Width: =Parent.TemplateWidth - 10
+                              X: =3
+                              Y: =3
+                        - lbCardTitleDnV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =43
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =11.2
+                              Text: =ThisItem.TituloTarefa
+                              Width: =Parent.TemplateWidth - 35
+                              X: =15
+                              Y: =If(lbKanAtividadeDn.Visible,lbKanAtividadeDn.Y + lbKanAtividadeDn.Height + 4,12)
+                        - lbCardPessoaDnV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(100,117,109,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =20
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: =Coalesce(ThisItem.Assigned,"Sem responsável")
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardTitleDnV8KanT.Y + lbCardTitleDnV8KanT.Height + 4
+                        - lbCardDetalheDnV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,158,89,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =24
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =9.5
+                              Text: |-
+                                =ThisItem.Priority & " - " &
+                                Text(
+                                    Coalesce(
+                                        IfError(Value(ThisItem.EstimatedHoras), 0),
+                                        0
+                                    ),
+                                    "0.#"
+                                ) & " h • " &
+                                IfError(
+                                    With(
+                                        {dataOriginal: Trim(Text(ThisItem.DueDate))},
+                                        If(
+                                            IsBlank(dataOriginal),
+                                            "",
+                                            If(
+                                                IsMatch(dataOriginal, "^[0-9]{5}(\.[0-9]+)?$"),
+                                                Text(
+                                                    DateAdd(
+                                                        Date(1899, 12, 30),
+                                                        RoundDown(
+                                                            Value(dataOriginal, "en-US"),
+                                                            0
+                                                        ),
+                                                        TimeUnit.Days
+                                                    ),
+                                                    "dd/mm/yyyy"
+                                                ),
+                                                Text(
+                                                    DateTimeValue(dataOriginal, "pt-BR"),
+                                                    "dd/mm/yyyy"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "Data inválida"
+                                )
+                              Width: =Parent.TemplateWidth - 35
+                              Wrap: =false
+                              X: =15
+                              Y: =lbCardPessoaDnV8KanT.Y + lbCardPessoaDnV8KanT.Height + 4
+                        - lbKanAtividadeDn:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(11,107,58,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =18
+                              Size: =9
+                              Text: =If(IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"",Trim(First(Split(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))," | ")).Value))
+                              Tooltip: =Coalesce(Text(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID)),"")
+                              Visible: =!IsBlank(LookUp(colKanAtividades,AtividadeID = ThisItem.AtividadeID,VinculoID))
+                              Width: =Parent.TemplateWidth - 32
+                              Wrap: =false
+                              X: =13
+                              Y: =8
+                  - lbKanVazioDn:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Center
+                        Color: =RGBA(95,111,102,1)
+                        Height: =35
+                        Text: ="Nenhuma tarefa neste status"
+                        Visible: =CountRows(galColDnV8KanT.AllItems)=0
+                        Width: =Parent.Width - 30
+                        X: =15
+                        Y: =Parent.Height / 2
+            - cntRelTabelaV7V8KanT:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =Parent.Height - 280
+                  Visible: =varRelModo = "Lista"
+                  Width: =Parent.Width - 48
+                  X: =24
+                  Y: =258
+                Children:
+                  - cntListaCabV8KanT:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        Fill: =RGBA(238,245,241,1)
+                        Height: =46
+                        Width: =Parent.Width - 24
+                        X: =12
+                        Y: =12
+                      Children:
+                        - lbColAtvV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =27
+                              Size: =9
+                              Text: ="ATIVIDADE"
+                              Width: =Parent.Width * 0.35
+                              X: =16
+                              Y: =10
+                        - lbColStatV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =27
+                              Size: =9
+                              Text: ="STATUS"
+                              Width: =Parent.Width * 0.17
+                              X: =Parent.Width * 0.38
+                              Y: =10
+                        - lbColRespV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =27
+                              Size: =9
+                              Text: ="ASSIGNED"
+                              Width: =Parent.Width * 0.26
+                              X: =Parent.Width * 0.57
+                              Y: =10
+                        - lbColPriV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =27
+                              Size: =9
+                              Text: ="PRIORIDADE"
+                              Width: =Parent.Width * 0.16
+                              X: =Parent.Width * 0.83
+                              Y: =10
+                  - galRelListaV7V8KanT:
+                      Control: Gallery@2.15.0
+                      Variant: Vertical
+                      Properties:
+                        Fill: =RGBA(255,255,255,1)
+                        Height: =Parent.Height - 78
+                        Items: =SortByColumns(Filter(colKanTarefas, !IsBlank(TaskID) && (ddlRelPessoaV7V8KanT.Selected.Value = "Todos" || Assigned = ddlRelPessoaV7V8KanT.Selected.Value)), "CriadoEm", SortOrder.Descending)
+                        TemplateSize: =66
+                        Width: =Parent.Width - 24
+                        X: =12
+                        Y: =64
+                      Children:
+                        - lbFundoLinhaV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Fill: =RGBA(248,251,249,1)
+                              Font: =Font.'Segoe UI'
+                              Height: =59
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =10
+                              Text: =""
+                              Width: =Parent.TemplateWidth - 8
+                              X: =4
+                              Y: =2
+                        - lbLinhaAtividadeV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              FontWeight: =FontWeight.Semibold
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =10
+                              Text: =ThisItem.TituloTarefa
+                              Width: =Parent.TemplateWidth * 0.35
+                              X: =16
+                              Y: =9
+                        - lbLinhaStatusV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =10
+                              Text: =ThisItem.Status
+                              Width: =Parent.TemplateWidth * 0.17
+                              X: =Parent.TemplateWidth * 0.38
+                              Y: =9
+                        - lbLinhaAssignedV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(100,117,109,1)
+                              Font: =Font.'Segoe UI'
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =10
+                              Text: =If(IsBlank(ThisItem.Assigned), "Sem responsável", ThisItem.Assigned)
+                              Width: =Parent.TemplateWidth * 0.26
+                              X: =Parent.TemplateWidth * 0.57
+                              Y: =9
+                        - lbLinhaPriorityV8KanT:
+                            Control: Label@2.5.1
+                            Properties:
+                              Color: =RGBA(0,73,43,1)
+                              Font: =Font.'Segoe UI'
+                              OnSelect: =Set(varGerSelecionarID, ThisItem.AtividadeID); Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                              Size: =10
+                              Text: =ThisItem.Priority
+                              Width: =Parent.TemplateWidth * 0.15
+                              X: =Parent.TemplateWidth * 0.83
+                              Y: =9

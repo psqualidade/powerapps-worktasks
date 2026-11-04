@@ -1,0 +1,1376 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  scrRegistroV8:
+    Properties:
+      Fill: =RGBA(233,244,236,1)
+      OnVisible: |-
+        =Refresh(tbAtividades);
+        ClearCollect(colRecentesLive, tbAtividades);
+        Set(varSalvando, false);
+        If(
+            varRegistroV8Inicializado <> true,
+            ClearCollect(
+                colTarefasTemp,
+                {TaskID: "" , AtividadeID: "", Tarefa: "", Status: "", EstimatedHoras: 0, DueDate: Today(), Priority: ""}
+            );
+            Clear(colTarefasTemp);
+            Set(varRegistroV8Inicializado, true)
+        );
+        If(IsEmpty(colV9Vinculos),
+        ClearCollect(colV9Vinculos,
+            {ID: "DMN0003782", Nome: "ATR - Nova Plataforma de Gestão de Projetos", Tipo: "Demanda"},
+            {ID: "DMN0003820", Nome: "ATR - Implementação Plataforma Documentação Técnica", Tipo: "Demanda"},
+            {ID: "DMN0004315", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Demanda"},
+            {ID: "DMN0004503", Nome: "ATR - Aplicativo de acompanhamento de custos de manutenção.", Tipo: "Demanda"},
+            {ID: "DMN0004596", Nome: "ATR - Sincronismo de ativo entre os módulos SAP AA x PM", Tipo: "Demanda"},
+            {ID: "DMN0004848", Nome: "ATR - Relatório para Consulta de Pedidos ZREM", Tipo: "Demanda"},
+            {ID: "DMN0004925", Nome: "ATR - Ajuste do fluxo de aprovação Nota M6", Tipo: "Demanda"},
+            {ID: "DMN0005058", Nome: "ATR -  Gestão da Obsolescência e Ativos de TA", Tipo: "Demanda"},
+            {ID: "DMN0005075", Nome: "ATR - Smart RCM 5.0", Tipo: "Demanda"},
+            {ID: "DMN0005201", Nome: "ATR - Plataforma Databricks para Inteligência Industrial", Tipo: "Demanda"},
+            {ID: "DMN0005236", Nome: "ATR - Segregação de Usuários de Serviços para PI - MA e ORT", Tipo: "Demanda"},
+            {ID: "DMN0005313", Nome: "ATR - Implantação Sigga | Empower", Tipo: "Demanda"},
+            {ID: "PROJ0033098", Nome: "ATR - Aplicativo Xilômetro - PUMA", Tipo: "Projeto"},
+            {ID: "PROJ0060015_", Nome: "ATR - Manutenção Inteligente (Futurai)", Tipo: "Projeto"},
+            {ID: "PROJ0082265", Nome: "ATR - Migração PWA_Planner – SDP2013 & Ajuste KPG", Tipo: "Projeto"},
+            {ID: "PROJ0091417", Nome: "ATR - Ativação Joule - IA SAP PM", Tipo: "Projeto"},
+            {ID: "PROJ0091830", Nome: "ATR - Agente de Manutenção - Dharma IA", Tipo: "Projeto"},
+            {ID: "PROJ0095299", Nome: "ATR - Implementação PI Agent Connect", Tipo: "Projeto"},
+            {ID: "PROJ0099061", Nome: "ATR - Correção da Integração de Ordens de Manutenção entre SAP e Isoplan", Tipo: "Projeto"},
+            {ID: "PROJ0103899", Nome: "Smart - Backlog B - ATR", Tipo: "Projeto"},
+            {ID: "PROJ0107388", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Projeto"},
+            {ID: "DMN0005356", Nome: "ATR - Assistente de reparo externo", Tipo: "Demanda"}
+        )
+        );
+        ClearCollect(colV9Opcoes,{ID: "", Rotulo: "Nenhum vínculo"}); Collect(colV9Opcoes,ShowColumns(AddColumns(colV9Vinculos,Rotulo,ID & " | " & Nome),ID,Rotulo));
+        Set(varMenuRelatoriosAberto,false)
+    Children:
+      - cntMenuV7IniReg7V8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(0,60,39,1)
+            Height: =Parent.Height
+            Width: =230
+          Children:
+            - imgFundoMenuV7IniReg7V8:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =370
+                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  ImagePosition: =ImagePosition.Fill
+                  Width: =Parent.Width
+                  Y: =398
+            - imgLogoV7IniReg7V8:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =99
+                  Image: =PowerApps_Logo_Branca_Referencia
+                  Width: =230
+            - lbMenuLegendaV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(181,218,195,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =24
+                  Size: =9
+                  Text: ="NAVEGAÇÃO"
+                  Width: =192
+                  X: =20
+                  Y: =154
+            - lbNavInicioV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⌂   Início"
+                  Width: =210
+                  X: =10
+                  Y: =190
+            - lbNavRegistroV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,158,89,1)
+                  Font: =Font.'Segoe UI'
+                  FontWeight: =FontWeight.Semibold
+                  Height: =44
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="▤   Registro de Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =242
+            - lbNavGerenciarV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrGerenciarV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="✎   Gerenciar Atividades"
+                  Width: =210
+                  X: =10
+                  Y: =294
+            - lbNavRelatoriosV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(varMenuRelatoriosAberto, RGBA(0,158,89,1), RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Set(varMenuRelatoriosAberto, !Coalesce(varMenuRelatoriosAberto,false))
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: =If(varMenuRelatoriosAberto,"▾   Relatórios","▸   Relatórios")
+                  Width: =210
+                  X: =10
+                  Y: =346
+            - lbNavConfigV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =RGBA(0,60,39,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =44
+                  OnSelect: =Navigate(scrConfiguracoesV8, ScreenTransition.Fade)
+                  PaddingLeft: =14
+                  Size: =11.5
+                  Text: ="⚙   Configurações"
+                  Width: =210
+                  X: =10
+                  Y: =lbNavRelatoriosV7IniReg7V8.Y + 52 + If(varMenuRelatoriosAberto, 88, 0)
+            - lbMenuFooterV7IniReg7V8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(210,233,218,1)
+                  Font: =Font.'Segoe UI'
+                  Height: =23
+                  Size: =8
+                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Visible: =false
+                  Width: =200
+                  X: =17
+                  Y: =Parent.Height - 33
+            - lbSubRel0RegV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  Height: =38
+                  OnSelect: =Navigate(scrRelatoriosV8,ScreenTransition.Fade)
+                  Size: =12
+                  Text: ="  •   Kanban de Atividades"
+                  Visible: =varMenuRelatoriosAberto
+                  Width: =Parent.Width - 47
+                  X: =34
+                  Y: =lbNavRelatoriosV7IniReg7V8.Y + 47
+            - lbSubRel1RegV8:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =RGBA(255,255,255,1)
+                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Font: =Font.'Segoe UI'
+                  Height: =38
+                  OnSelect: =Navigate(scrKanbanTarefasV8,ScreenTransition.Fade)
+                  Size: =12
+                  Text: ="  •   Kanban de Tarefas"
+                  Visible: =varMenuRelatoriosAberto
+                  Width: =Parent.Width - 47
+                  X: =34
+                  Y: =lbNavRelatoriosV7IniReg7V8.Y + 88
+      - cntConteudoV7IniReg7V8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(233,244,236,1)
+            Height: =Parent.Height
+            Width: =Parent.Width - 230
+            X: =230
+          Children:
+            - cntTopoV7IniReg7V8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =RGBA(255,255,255,1)
+                  Height: =92
+                  Width: =Parent.Width
+                Children:
+                  - lbTituloTopoV7IniReg7V8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Size: =19
+                        Text: ="Registro de Atividades"
+                        Width: =350
+                        X: =27
+                        Y: =15
+                  - lbSubTopoV7IniReg7V8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =10.5
+                        Text: ="Atividades não contabilizadas no SPM"
+                        Width: =375
+                        X: =28
+                        Y: =55
+                  - lbContaTopoV7IniReg7V8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(0,73,43,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =27
+                        Size: =11
+                        Text: =User().FullName
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =16
+                  - lbContaTipoV7IniReg7V8:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        Color: =RGBA(100,117,109,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =24
+                        Size: =9
+                        Text: =User().Email
+                        Width: =249
+                        X: =Parent.Width - 326
+                        Y: =43
+                  - txtBuscaTopoRegistroV7Reg7V8:
+                      Control: Classic/TextInput@2.3.2
+                      Properties:
+                        BorderColor: =RGBA(214,227,219,1)
+                        Color: =RGBA(0,73,43,1)
+                        Default: =""
+                        DelayOutput: =true
+                        Fill: =RGBA(246,249,247,1)
+                        Font: =Font.'Segoe UI'
+                        Height: =42
+                        HintText: ="Pesquisar por título, status ou responsável..."
+                        Size: =10
+                        Width: =Max(180, Parent.Width - 700)
+                        X: =360
+                        Y: =24
+                  - btnAvatarV8RegistroV8:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =RGBA(224,238,230,1)
+                        Color: =RGBA(255,255,255,1)
+                        Fill: =RGBA(0,107,60,1)
+                        Font: =Font.'Segoe UI'
+                        FontWeight: =FontWeight.Bold
+                        Height: =43
+                        HoverFill: =RGBA(0,107,60,1)
+                        PressedFill: =RGBA(0,107,60,1)
+                        RadiusBottomLeft: =24
+                        RadiusBottomRight: =24
+                        RadiusTopLeft: =24
+                        RadiusTopRight: =24
+                        Size: =12
+                        Text: =Upper(Left(User().FullName, 1) & Left(Last(Split(User().FullName, " ")).Value, 1))
+                        Tooltip: =User().FullName & " | " & User().Email
+                        Width: =43
+                        X: =Parent.Width - 65
+                        Y: =22
+            - cntBodyRegistroV7Reg7V8:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(233,244,236,1)
+                  Height: =Parent.Height - Self.Y - 16
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  Width: =Parent.Width - 48
+                  X: =24
+                  Y: =cntTopoV7IniReg7V8.Y + cntTopoV7IniReg7V8.Height + 16
+                Children:
+                  - cntFormRegistroV7Reg7V8:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =RGBA(217,231,222,1)
+                        BorderThickness: =1
+                        Fill: =RGBA(255,255,255,1)
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =6
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        RadiusBottomLeft: =12
+                        RadiusBottomRight: =12
+                        RadiusTopLeft: =12
+                        RadiusTopRight: =12
+                      Children:
+                        - cntTituloNovaAtividadeReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =36
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =8
+                              LayoutMinHeight: =36
+                              LayoutMinWidth: =200
+                              Width: =Parent.Width - 32
+                            Children:
+                              - lbIconeNovaReg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Color: =RGBA(18,161,80,1)
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =32
+                                    Size: =24
+                                    Text: ="+"
+                                    Width: =32
+                              - lbNovaAtividadeReg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Color: =RGBA(11,47,35,1)
+                                    FillPortions: =1
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =180
+                                    Size: =18
+                                    Text: ="Nova Atividade"
+                                    Wrap: =false
+                        - cntStatusComplexidadeReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =76
+                              LayoutAlignItems: =LayoutAlignItems.Stretch
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =12
+                              LayoutMinHeight: =76
+                              LayoutMinWidth: =300
+                              Width: =Parent.Width - 32
+                            Children:
+                              - cntStatusReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbStatusReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          LayoutMinHeight: =20
+                                          Size: =12
+                                          Text: ="Status *"
+                                          Wrap: =false
+                                    - cntStatusOpcoesReg7V8:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          Height: =46
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutMinHeight: =46
+                                          LayoutMinWidth: =0
+                                        Children:
+                                          - radStatusReg7V8:
+                                              Control: Classic/Radio@2.3.0
+                                              Properties:
+                                                Color: =RGBA(11,47,35,1)
+                                                Default: ="Backlog"
+                                                DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                                Fill: =RGBA(255,255,255,1)
+                                                FillPortions: =1
+                                                Font: =Font.'Segoe UI'
+                                                Height: =46
+                                                Items: =Table({Value:"Backlog"}, {Value:"In Progress"}, {Value:"Done"})
+                                                Items.Value: =Value
+                                                Layout: =Layout.Horizontal
+                                                LayoutMinHeight: =46
+                                                RadioSize: =17
+                                                Size: =12
+                                                Width: =Parent.Width
+                              - cntComplexidadeReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbComplexidadeReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          LayoutMinHeight: =20
+                                          Size: =12
+                                          Text: ="Complexidade *"
+                                          Wrap: =false
+                                    - ddlComplexidadeReg7V8:
+                                        Control: Classic/DropDown@2.3.1
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          ChevronBackground: =RGBA(255,255,255,1)
+                                          ChevronFill: =RGBA(11,107,58,1)
+                                          Color: =RGBA(11,47,35,1)
+                                          Default: ="Média"
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          Items: =Table({Value:"Baixa"}, {Value:"Média"}, {Value:"Alta"})
+                                          Items.Value: =Value
+                                          LayoutMinHeight: =36
+                                          Size: =12
+                                          Width: =Parent.Width
+                        - cntTituloAtividadeReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =62
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =4
+                              LayoutMinHeight: =62
+                              Width: =Parent.Width - 32
+                            Children:
+                              - lbTituloCampoReg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Color: =RGBA(11,47,35,1)
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =18
+                                    LayoutMinHeight: =20
+                                    Size: =12
+                                    Text: ="Título *"
+                                    Wrap: =false
+                              - txtTituloReg7V8:
+                                  Control: Classic/TextInput@2.3.2
+                                  Properties:
+                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderThickness: =1
+                                    Color: =RGBA(11,47,35,1)
+                                    Default: =""
+                                    DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                    Fill: =RGBA(255,255,255,1)
+                                    FillPortions: =1
+                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    HintText: ="Digite um título para a atividade..."
+                                    LayoutMinHeight: =36
+                                    RadiusBottomLeft: =6
+                                    RadiusBottomRight: =6
+                                    RadiusTopLeft: =6
+                                    RadiusTopRight: =6
+                                    Size: =12
+                                    Width: =Parent.Width
+                        - cntDescricaoReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =86
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =4
+                              LayoutMinHeight: =86
+                              Width: =Parent.Width - 32
+                            Children:
+                              - lbDescricaoCampoReg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Color: =RGBA(11,47,35,1)
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =18
+                                    LayoutMinHeight: =20
+                                    Size: =12
+                                    Text: ="Descrição *"
+                                    Wrap: =false
+                              - txtDescricaoReg7V8:
+                                  Control: Classic/TextInput@2.3.2
+                                  Properties:
+                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderThickness: =1
+                                    Color: =RGBA(11,47,35,1)
+                                    Default: =""
+                                    DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                    Fill: =RGBA(255,255,255,1)
+                                    FillPortions: =1
+                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    Font: =Font.'Segoe UI'
+                                    Height: =60
+                                    HintText: ="Descreva a atividade, incluindo objetivo, contexto e resultados esperados..."
+                                    LayoutMinHeight: =60
+                                    Mode: =TextMode.MultiLine
+                                    RadiusBottomLeft: =6
+                                    RadiusBottomRight: =6
+                                    RadiusTopLeft: =6
+                                    RadiusTopRight: =6
+                                    Size: =12
+                                    Width: =Parent.Width
+                        - cntCamposComplementaresReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =74
+                              LayoutAlignItems: =LayoutAlignItems.Stretch
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =8
+                              LayoutMinHeight: =74
+                              Width: =Parent.Width - 32
+                            Children:
+                              - cntAssignedV3Reg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Height: =70
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbAssignedADReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          Size: =12
+                                          Text: ="Responsável"
+                                          Tooltip: ="Responsável pela atividade"
+                                          Wrap: =false
+                                    - cmbAssignedReg7V8:
+                                        Control: Classic/ComboBox@2.4.0
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          ChevronBackground: =RGBA(255,255,255,1)
+                                          ChevronFill: =RGBA(11,107,58,1)
+                                          Color: =RGBA(11,47,35,1)
+                                          DisplayFields: =["DisplayName"]
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          InputTextPlaceholder: ="Digite um nome ou e-mail..."
+                                          Items: |-
+                                            =UsuáriosdoOffice365.SearchUserV2(
+                                                {searchTerm: Self.SearchText}
+                                            ).value
+                                          LayoutMinHeight: =36
+                                          LayoutMinWidth: =145
+                                          SearchFields: =["DisplayName","Mail"]
+                                          SelectMultiple: =false
+                                          Size: =12
+                                          Width: =Parent.Width
+                              - cntEstimatedReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Height: =70
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbEstimatedReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          Size: =12
+                                          Text: ="Horas estimadas"
+                                          Tooltip: ="Soma das horas estimadas das tarefas vinculadas"
+                                          Wrap: =false
+                                    - txtEstimatedReg7V8:
+                                        Control: Classic/TextInput@2.3.2
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          Color: =If(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)) = 0, RGBA(95,111,102,1), RGBA(11,47,35,1))
+                                          Default: =If(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)) = 0, "Ex. 16", Text(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0))))
+                                          DisplayMode: =DisplayMode.View
+                                          Fill: =RGBA(244,247,245,1)
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(201,214,206,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          LayoutMinHeight: =36
+                                          RadiusBottomLeft: =6
+                                          RadiusBottomRight: =6
+                                          RadiusTopLeft: =6
+                                          RadiusTopRight: =6
+                                          Size: =12
+                                          Tooltip: ="Soma das horas estimadas das tarefas. Campo somente leitura."
+                                          Width: =Parent.Width
+                              - cntDueDateReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Height: =70
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbDueDateReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          Size: =12
+                                          Text: ="Data de conclusão"
+                                          Width: =Parent.Width
+                                          Wrap: =false
+                                    - dtpDueDateReg7V8:
+                                        Control: Classic/DatePicker@2.6.0
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          Color: =RGBA(11,47,35,1)
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          IconBackground: =RGBA(11,107,58,1)
+                                          IconFill: =RGBA(255,255,255,1)
+                                          LayoutMinHeight: =36
+                                          Size: =12
+                                          Width: =Parent.Width
+                              - cntPriorityReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Height: =70
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =4
+                                    LayoutMinHeight: =70
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lbPriorityReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(11,47,35,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =18
+                                          Size: =12
+                                          Text: ="Prioridade"
+                                          Wrap: =false
+                                    - ddlPriorityReg7V8:
+                                        Control: Classic/DropDown@2.3.1
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          ChevronBackground: =RGBA(255,255,255,1)
+                                          ChevronFill: =RGBA(11,107,58,1)
+                                          Color: =Switch(ddlPriorityReg7V8.Selected.Value, "Alta", RGBA(180,35,24,1), "Crítica", RGBA(180,35,24,1), "Média", RGBA(138,90,0,1), "Baixa", RGBA(11,107,58,1), RGBA(11,47,35,1))
+                                          Default: ="Média"
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =Switch(ddlPriorityReg7V8.Selected.Value, "Alta", RGBA(251,218,218,1), "Crítica", RGBA(251,218,218,1), "Média", RGBA(252,239,199,1), "Baixa", RGBA(215,240,224,1), RGBA(255,255,255,1))
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          Items: =Table({Value:"Baixa"}, {Value:"Média"}, {Value:"Alta"}, {Value:"Crítica"})
+                                          Items.Value: =Value
+                                          LayoutMinHeight: =36
+                                          Size: =12
+                                          Width: =Parent.Width
+                        - cntV9VinculoRegistro:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =62
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =4
+                              LayoutMinHeight: =62
+                              Width: =Parent.Width - 32
+                            Children:
+                              - lbV9VinculoRegistro:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Color: =RGBA(11,47,35,1)
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =18
+                                    Size: =12
+                                    Text: ="Projeto ou demanda (opcional)"
+                                    Width: =Parent.Width
+                                    Wrap: =false
+                              - ddV9VinculoRegistro:
+                                  Control: Classic/DropDown@2.3.1
+                                  Properties:
+                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderThickness: =1
+                                    ChevronBackground: =RGBA(255,255,255,1)
+                                    ChevronFill: =RGBA(11,107,58,1)
+                                    Color: =RGBA(11,47,35,1)
+                                    Default: ="Nenhum vínculo"
+                                    DisplayMode: =If(varSalvando,DisplayMode.Disabled,DisplayMode.Edit)
+                                    Fill: =RGBA(255,255,255,1)
+                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    Font: =Font.'Segoe UI'
+                                    Height: =36
+                                    Items: =colV9Opcoes
+                                    Items.Value: =Rotulo
+                                    LayoutMinHeight: =36
+                                    Size: =12
+                                    Width: =Parent.Width
+                        - cntTarefasReg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              BorderColor: =RGBA(217,231,222,1)
+                              BorderThickness: =1
+                              Fill: =RGBA(244,247,245,1)
+                              FillPortions: =0
+                              Height: =If(varExibirEntradaTarefa, 190, 128)
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =4
+                              LayoutMinHeight: =If(varExibirEntradaTarefa, 190, 128)
+                              LayoutMinWidth: =300
+                              PaddingBottom: =12
+                              PaddingLeft: =12
+                              PaddingRight: =12
+                              PaddingTop: =12
+                              RadiusBottomLeft: =12
+                              RadiusBottomRight: =12
+                              RadiusTopLeft: =12
+                              RadiusTopRight: =12
+                              Width: =Parent.Width - 32
+                            Children:
+                              - cntCabecalhoTarefasReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    Height: =34
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                                    LayoutMinHeight: =34
+                                  Children:
+                                    - lbListaTarefasReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Color: =RGBA(0,73,43,1)
+                                          FillPortions: =1
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =28
+                                          Text: ="Lista de tarefas (" & CountRows(colTarefasTemp) & ")"
+                                    - lbAdicionarTarefaReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          Color: =RGBA(0,158,89,1)
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Height: =30
+                                          LayoutMinWidth: =110
+                                          OnSelect: =Set(varExibirEntradaTarefa, !varExibirEntradaTarefa)
+                                          Size: =9
+                                          Text: ="+ Adicionar tarefa"
+                                          Width: =120
+                              - cntEntradaTarefaReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =RGBA(255,255,255,1)
+                                    FillPortions: =0
+                                    Height: =54
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =6
+                                    LayoutMinHeight: =54
+                                    LayoutMinWidth: =300
+                                    Visible: =varExibirEntradaTarefa = true
+                                  Children:
+                                    - txtTarefaTituloReg7V8:
+                                        Control: Classic/TextInput@2.3.2
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          Color: =RGBA(11,47,35,1)
+                                          Default: =""
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =4
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          HintText: ="Título da tarefa"
+                                          LayoutMinWidth: =110
+                                          Size: =10
+                                    - ddlTarefaStatusReg7V8:
+                                        Control: Classic/DropDown@2.3.1
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          ChevronBackground: =RGBA(255,255,255,1)
+                                          ChevronFill: =RGBA(11,107,58,1)
+                                          Color: =RGBA(11,47,35,1)
+                                          Default: ="Backlog"
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =2
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          Items: =colStatus
+                                          Items.Value: =Value
+                                          LayoutMinWidth: =95
+                                          Size: =10
+                                    - txtTarefaHorasReg7V8:
+                                        Control: Classic/TextInput@2.3.2
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          Color: =RGBA(11,47,35,1)
+                                          Default: =""
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =1
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Format: =TextFormat.Number
+                                          Height: =36
+                                          HintText: ="Horas"
+                                          LayoutMinWidth: =50
+                                          Size: =10
+                                    - dtpTarefaPrazoReg7V8:
+                                        Control: Classic/DatePicker@2.6.0
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          Color: =RGBA(11,47,35,1)
+                                          DefaultDate: =Blank()
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =2
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Format: ="dd/mm/yyyy"
+                                          Height: =36
+                                          IconBackground: =RGBA(11,107,58,1)
+                                          IconFill: =RGBA(255,255,255,1)
+                                          InputTextPlaceholder: ="Selecionar data"
+                                          LayoutMinWidth: =120
+                                          Size: =10
+                                    - ddlTarefaPrioridadeReg7V8:
+                                        Control: Classic/DropDown@2.3.1
+                                        Properties:
+                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderThickness: =1
+                                          ChevronBackground: =RGBA(255,255,255,1)
+                                          ChevronFill: =RGBA(11,107,58,1)
+                                          Color: =RGBA(11,47,35,1)
+                                          Default: ="Média"
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(255,255,255,1)
+                                          FillPortions: =2
+                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          Font: =Font.'Segoe UI'
+                                          Height: =36
+                                          Items: =colPrioridade
+                                          Items.Value: =Value
+                                          LayoutMinWidth: =95
+                                          Size: =10
+                                    - btnConfirmarTarefaReg7V8:
+                                        Control: Classic/Button@2.2.0
+                                        Properties:
+                                          Color: =RGBA(255,255,255,1)
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Fill: =RGBA(18,161,80,1)
+                                          FillPortions: =1
+                                          Height: =36
+                                          LayoutMinWidth: =78
+                                          OnSelect: |-
+                                            =If(
+                                                IsBlank(Trim(txtTarefaTituloReg7V8.Text)),
+                                                Notify("Informe o título da tarefa.", NotificationType.Warning),
+                                                If(
+                                                    IsBlank(dtpTarefaPrazoReg7V8.SelectedDate),
+                                                    Notify("Informe o vencimento da tarefa.", NotificationType.Warning),
+                                                    Collect(
+                                                    colTarefasTemp,
+                                                    {
+                                                        TaskID: Text(GUID()),
+                                                        Tarefa: Trim(txtTarefaTituloReg7V8.Text),
+                                                        Status: ddlTarefaStatusReg7V8.Selected.Value,
+                                                        EstimatedHoras: If(IsBlank(Trim(txtTarefaHorasReg7V8.Text)), Blank(), Value(txtTarefaHorasReg7V8.Text)),
+                                                        DueDate: dtpTarefaPrazoReg7V8.SelectedDate,
+                                                        Priority: ddlTarefaPrioridadeReg7V8.Selected.Value
+                                                    }
+                                                );
+                                                Reset(txtTarefaTituloReg7V8);
+                                                Reset(ddlTarefaStatusReg7V8);
+                                                Reset(txtTarefaHorasReg7V8);
+                                                Reset(dtpTarefaPrazoReg7V8);
+                                                Reset(ddlTarefaPrioridadeReg7V8);
+                                                Set(varExibirEntradaTarefa, false)
+                                                )
+                                            )
+                                          Size: =9
+                                          Text: ="Adicionar"
+                              - cntCabTabelaTarefasReg7V8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =RGBA(238,243,240,1)
+                                    FillPortions: =0
+                                    Height: =28
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinHeight: =28
+                                  Children:
+                                    - lbCabTarefaReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          FillPortions: =4
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =9
+                                          Text: ="Tarefa"
+                                    - lbCabStatusReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          FillPortions: =2
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =9
+                                          Text: ="Status"
+                                    - lbCabHorasReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          FillPortions: =2
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =9
+                                          Text: ="Horas"
+                                    - lbCabVencimentoReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          FillPortions: =2
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =9
+                                          Text: ="Vencimento"
+                                    - lbCabPrioridadeReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          FillPortions: =2
+                                          Font: =Font.'Segoe UI'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =9
+                                          Text: ="Prioridade"
+                              - galTarefasReg7V8:
+                                  Control: Gallery@2.15.0
+                                  Variant: Vertical
+                                  Properties:
+                                    Items: =colTarefasTemp
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    LayoutMinHeight: =40
+                                    LayoutMinWidth: =250
+                                    TemplatePadding: =2
+                                    TemplateSize: =34
+                                    Width: =Parent.Width - 24
+                                  Children:
+                                    - lbGalTarefaTituloReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Height: =28
+                                          Size: =9
+                                          Text: =ThisItem.Tarefa
+                                          Width: =Parent.TemplateWidth * 0.30
+                                          X: =4
+                                          Y: =2
+                                    - lbGalTarefaStatusReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Height: =28
+                                          Size: =9
+                                          Text: =ThisItem.Status
+                                          Width: =Parent.TemplateWidth * 0.16
+                                          X: =Parent.TemplateWidth * 0.31
+                                          Y: =2
+                                    - lbGalTarefaHorasReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Height: =28
+                                          Size: =9
+                                          Text: =If(IsBlank(ThisItem.EstimatedHoras), "—", Text(ThisItem.EstimatedHoras) & " h")
+                                          Width: =Parent.TemplateWidth * 0.11
+                                          X: =Parent.TemplateWidth * 0.47
+                                          Y: =2
+                                    - lbGalTarefaPrazoReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Height: =28
+                                          Size: =9
+                                          Text: =Text(ThisItem.DueDate, "dd/mm/yyyy")
+                                          Width: =Parent.TemplateWidth * 0.19
+                                          X: =Parent.TemplateWidth * 0.58
+                                          Y: =2
+                                    - lbGalTarefaPrioridadeReg7V8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Height: =28
+                                          Size: =9
+                                          Text: =ThisItem.Priority
+                                          Width: =Parent.TemplateWidth * 0.15
+                                          X: =Parent.TemplateWidth * 0.77
+                                          Y: =2
+                                    - icoExcluirTarefaReg7V8:
+                                        Control: Classic/Icon@2.5.0
+                                        Properties:
+                                          Color: =RGBA(180,50,50,1)
+                                          DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                          Height: =22
+                                          Icon: =Icon.Trash
+                                          OnSelect: =RemoveIf(colTarefasTemp, TaskID = ThisItem.TaskID)
+                                          Width: =22
+                                          X: =Parent.TemplateWidth - 26
+                                          Y: =5
+                        - cntBotoesV3Reg7V8:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =52
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =12
+                              LayoutMinHeight: =52
+                              PaddingBottom: =8
+                              PaddingTop: =8
+                              Width: =Parent.Width - 32
+                            Children:
+                              - lbSalvarV3Reg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    Color: =RGBA(255,255,255,1)
+                                    DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                    Fill: =RGBA(18,161,80,1)
+                                    FillPortions: =3
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =36
+                                    OnSelect: |
+                                      =
+                                      If(
+                                          varSalvando <> true,
+                                          If(
+                                              IsBlank(Trim(txtTituloReg7V8.Text)) ||
+                                              IsBlank(Trim(txtDescricaoReg7V8.Text)),
+                                              Notify(
+                                                  "Preencha o título e a descrição.",
+                                                  NotificationType.Warning
+                                              ),
+                                              If(
+                                                  varExibirEntradaTarefa = true &&
+                                                  !IsBlank(Trim(txtTarefaTituloReg7V8.Text)),
+                                                  Notify(
+                                                      "Clique em Adicionar para incluir a tarefa antes de salvar.",
+                                                      NotificationType.Warning
+                                                  ),
+                                                  Set(varSalvando, true);
+                                                  Set(varErroGravacao, Blank());
+
+                                                  ClearCollect(
+                                                      colFalhasTarefas,
+                                                      {TaskID: "", Mensagem: ""}
+                                                  );
+                                                  Clear(colFalhasTarefas);
+
+                                                  If(
+                                                      IsBlank(varAtividadeID),
+                                                      Set(varAtividadeID, Text(GUID()))
+                                                  );
+
+                                                  If(
+                                                      IsBlank(varRegistroSalvo),
+                                                      IfError(
+                                                          Set(
+                                                              varRegistroSalvo,
+                                                              Patch(
+                                                                  tbAtividades,
+                                                                  Coalesce(
+                                                                      LookUp(
+                                                                          tbAtividades,
+                                                                          AtividadeID = varAtividadeID
+                                                                      ),
+                                                                      Defaults(tbAtividades)
+                                                                  ),
+                                                                  {
+                                                                      AtividadeID: varAtividadeID,
+                                                                      Titulo: Trim(txtTituloReg7V8.Text),
+                                                                      Descricao: Trim(txtDescricaoReg7V8.Text),
+                                                                      Status: radStatusReg7V8.Selected.Value,
+                                                                      Complexidade: ddlComplexidadeReg7V8.Selected.Value,
+                                                                      Assigned: If(
+                                                                          IsBlank(cmbAssignedReg7V8.Selected.DisplayName),
+                                                                          "",
+                                                                          cmbAssignedReg7V8.Selected.DisplayName
+                                                                      ),
+                                                                      EstimatedHoras: Sum(
+                                                                          colTarefasTemp,
+                                                                          Coalesce(EstimatedHoras, 0)
+                                                                      ),
+                                                                      VinculoID: ddV9VinculoRegistro.Selected.ID,
+                                                                      DueDate: dtpDueDateReg7V8.SelectedDate,
+                                                                      Priority: ddlPriorityReg7V8.Selected.Value,
+                                                                      CriadoPor: User().FullName,
+                                                                      CriadoEm: Now(),
+                                                                      AtualizadoEm: Now()
+                                                                  }
+                                                              )
+                                                          ),
+                                                          Set(varErroGravacao, FirstError.Message)
+                                                      )
+                                                  );
+
+                                                  If(
+                                                      IsBlank(varErroGravacao) &&
+                                                      !IsBlank(varRegistroSalvo),
+                                                      ForAll(
+                                                          colTarefasTemp As t,
+                                                          IfError(
+                                                              Patch(
+                                                                  tbTarefas,
+                                                                  Coalesce(
+                                                                      LookUp(
+                                                                          tbTarefas,
+                                                                          TaskID = t.TaskID
+                                                                      ),
+                                                                      Defaults(tbTarefas)
+                                                                  ),
+                                                                  {
+                                                                      TaskID: t.TaskID,
+                                                                      AtividadeID: varAtividadeID,
+                                                                      TituloTarefa: t.Tarefa,
+                                                                      Status: t.Status,
+                                                                      EstimatedHoras: t.EstimatedHoras,
+                                                                      DueDate: t.DueDate,
+                                                                      Priority: t.Priority,
+                                                                      Assigned: If(
+                                                                          IsBlank(cmbAssignedReg7V8.Selected.DisplayName),
+                                                                          "",
+                                                                          cmbAssignedReg7V8.Selected.DisplayName
+                                                                      ),
+                                                                      CriadoEm: Now(),
+                                                                      AtualizadoEm: Now()
+                                                                  }
+                                                              ),
+                                                              Collect(
+                                                                  colFalhasTarefas,
+                                                                  {
+                                                                      TaskID: t.TaskID,
+                                                                      Mensagem: FirstError.Message
+                                                                  }
+                                                              );
+                                                              Blank()
+                                                          )
+                                                      )
+                                                  );
+
+                                                  If(
+                                                      !IsBlank(varErroGravacao),
+                                                      Notify(
+                                                          "Erro ao salvar atividade: " & varErroGravacao,
+                                                          NotificationType.Error
+                                                      ),
+                                                      If(
+                                                          CountRows(colFalhasTarefas) > 0,
+                                                          Notify(
+                                                              "Atividade gravada, mas " &
+                                                              CountRows(colFalhasTarefas) &
+                                                              " tarefa(s) falharam. Verifique o Excel e tente Salvar novamente. Não clique em Cancelar.",
+                                                              NotificationType.Error
+                                                          ),
+                                                          Reset(txtTituloReg7V8);
+                                                          Reset(txtDescricaoReg7V8);
+                                                          Reset(cmbAssignedReg7V8);
+                                                          Reset(txtEstimatedReg7V8);
+                                                          Reset(dtpDueDateReg7V8);
+                                                          Reset(ddlComplexidadeReg7V8);
+                                                          Reset(ddlPriorityReg7V8);
+                                                          Reset(radStatusReg7V8);
+                                                          Reset(txtTarefaTituloReg7V8);
+                                                          Reset(ddlTarefaStatusReg7V8);
+                                                          Reset(txtTarefaHorasReg7V8);
+                                                          Reset(dtpTarefaPrazoReg7V8);
+                                                          Reset(ddlTarefaPrioridadeReg7V8);
+
+                                                          Clear(colTarefasTemp);
+                                                          Set(varExibirEntradaTarefa, false);
+
+                                                          Refresh(tbAtividades);
+                                                          ClearCollect(colRecentesLive, tbAtividades);
+
+                                                          If(
+                                                              IsBlank(
+                                                                  LookUp(
+                                                                      colRecentesLive,
+                                                                      AtividadeID = varRegistroSalvo.AtividadeID
+                                                                  )
+                                                              ),
+                                                              Collect(
+                                                                  colRecentesLive,
+                                                                  varRegistroSalvo
+                                                              )
+                                                          );
+
+                                                          Refresh(tbTarefas);
+
+                                                          Set(varErroLog, Blank());
+
+                                                          IfError(
+                                                              Patch(
+                                                                  tbLogAtividades,
+                                                                  Defaults(tbLogAtividades),
+                                                                  {
+                                                                      LogID: Text(GUID()),
+                                                                      AtividadeID: varAtividadeID,
+                                                                      RegistroID: varAtividadeID,
+                                                                      Entidade: "Atividade",
+                                                                      Operacao: "Incluir",
+                                                                      Usuario: User().FullName,
+                                                                      EmailUsuario: User().Email,
+                                                                      DataHora: Now(),
+                                                                      Detalhes: "Atividade registrada pelo aplicativo",
+                                                                      Resultado: "Sucesso"
+                                                                  }
+                                                              ),
+                                                              Set(varErroLog, FirstError.Message)
+                                                          );
+
+                                                          If(
+                                                              !IsBlank(varErroLog),
+                                                              Notify(
+                                                                  "Atividade salva, mas o log falhou: " &
+                                                                  varErroLog,
+                                                                  NotificationType.Warning
+                                                              )
+                                                          );
+
+                                                          Set(varAtividadeID, Blank());
+                                                          Set(varRegistroSalvo, Blank());
+
+                                                          Set(varListaTarefasExpandida, false);
+
+                                                          Notify(
+                                                              "Atividade e tarefas salvas com sucesso.",
+                                                              NotificationType.Success
+                                                          )
+                                                      )
+                                                  );
+
+                                                  Set(varSalvando, false)
+                                              )
+                                          )
+                                      )
+                                    Size: =12
+                                    Text: =If(varSalvando = true, "Salvando...", "Salvar")
+                              - lbCancelarV3Reg7V8:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderThickness: =1
+                                    Color: =RGBA(11,107,58,1)
+                                    DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
+                                    Fill: =RGBA(255,255,255,1)
+                                    FillPortions: =2
+                                    Font: =Font.'Segoe UI'
+                                    FontWeight: =FontWeight.Bold
+                                    Height: =36
+                                    OnSelect: |-
+                                      =If(
+                                          varSalvando <> true,
+                                          If(
+                                              !IsBlank(varRegistroSalvo),
+                                              Notify(
+                                                  "Esta atividade já foi gravada. Reenvie as tarefas pendentes antes de cancelar.",
+                                                  NotificationType.Warning
+                                              ),
+                                              Reset(txtTituloReg7V8);
+                                              Reset(txtDescricaoReg7V8);
+                                              Reset(cmbAssignedReg7V8);
+                                              Reset(txtEstimatedReg7V8);
+                                              Reset(dtpDueDateReg7V8);
+                                              Reset(ddlComplexidadeReg7V8);
+                                              Reset(ddlPriorityReg7V8);
+                                              Reset(radStatusReg7V8);
+                                              Reset(txtTarefaTituloReg7V8);
+                                              Reset(ddlTarefaStatusReg7V8);
+                                              Reset(txtTarefaHorasReg7V8);
+                                              Reset(dtpTarefaPrazoReg7V8);
+                                              Reset(ddlTarefaPrioridadeReg7V8);
+                                              Clear(colTarefasTemp);
+                                              Set(varExibirEntradaTarefa, false);
+                                              Set(varAtividadeID, Blank());
+                                              Set(varRegistroSalvo, Blank())
+                                          )
+                                      )
+                                    Size: =12
+                                    Text: ="Cancelar"
