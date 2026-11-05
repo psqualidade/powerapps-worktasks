@@ -9,7 +9,7 @@
 Screens:
   scrGerenciarV8:
     Properties:
-      Fill: =RGBA(244,248,245,1)
+      Fill: =RGBA(247,249,252,1)
       OnVisible: |-
         =Set(varConfirmarExclusao, false);
         Set(varGerenciando, false);
@@ -24,28 +24,28 @@ Screens:
         Reset(dtpGerVencimentoV7V8); Reset(cmbGerPessoaV7V8);
         If(IsEmpty(colV9Vinculos),
         ClearCollect(colV9Vinculos,
-            {ID: "DMN0003782", Nome: "ATR - Nova Plataforma de Gestão de Projetos", Tipo: "Demanda"},
-            {ID: "DMN0003820", Nome: "ATR - Implementação Plataforma Documentação Técnica", Tipo: "Demanda"},
-            {ID: "DMN0004315", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Demanda"},
-            {ID: "DMN0004503", Nome: "ATR - Aplicativo de acompanhamento de custos de manutenção.", Tipo: "Demanda"},
-            {ID: "DMN0004596", Nome: "ATR - Sincronismo de ativo entre os módulos SAP AA x PM", Tipo: "Demanda"},
-            {ID: "DMN0004848", Nome: "ATR - Relatório para Consulta de Pedidos ZREM", Tipo: "Demanda"},
-            {ID: "DMN0004925", Nome: "ATR - Ajuste do fluxo de aprovação Nota M6", Tipo: "Demanda"},
-            {ID: "DMN0005058", Nome: "ATR -  Gestão da Obsolescência e Ativos de TA", Tipo: "Demanda"},
-            {ID: "DMN0005075", Nome: "ATR - Smart RCM 5.0", Tipo: "Demanda"},
-            {ID: "DMN0005201", Nome: "ATR - Plataforma Databricks para Inteligência Industrial", Tipo: "Demanda"},
-            {ID: "DMN0005236", Nome: "ATR - Segregação de Usuários de Serviços para PI - MA e ORT", Tipo: "Demanda"},
-            {ID: "DMN0005313", Nome: "ATR - Implantação Sigga | Empower", Tipo: "Demanda"},
-            {ID: "PROJ0033098", Nome: "ATR - Aplicativo Xilômetro - PUMA", Tipo: "Projeto"},
-            {ID: "PROJ0060015_", Nome: "ATR - Manutenção Inteligente (Futurai)", Tipo: "Projeto"},
-            {ID: "PROJ0082265", Nome: "ATR - Migração PWA_Planner – SDP2013 & Ajuste KPG", Tipo: "Projeto"},
-            {ID: "PROJ0091417", Nome: "ATR - Ativação Joule - IA SAP PM", Tipo: "Projeto"},
-            {ID: "PROJ0091830", Nome: "ATR - Agente de Manutenção - Dharma IA", Tipo: "Projeto"},
-            {ID: "PROJ0095299", Nome: "ATR - Implementação PI Agent Connect", Tipo: "Projeto"},
-            {ID: "PROJ0099061", Nome: "ATR - Correção da Integração de Ordens de Manutenção entre SAP e Isoplan", Tipo: "Projeto"},
-            {ID: "PROJ0103899", Nome: "Smart - Backlog B - ATR", Tipo: "Projeto"},
-            {ID: "PROJ0107388", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Projeto"},
-            {ID: "DMN0005356", Nome: "ATR - Assistente de reparo externo", Tipo: "Demanda"}
+            {ID: "DMN0001001", Nome: "Automação de processo operacional", Tipo: "Demanda"},
+            {ID: "DMN0001002", Nome: "Melhoria de indicadores gerenciais", Tipo: "Demanda"},
+            {ID: "DMN0001003", Nome: "Manutenção inteligente - Fase 2", Tipo: "Demanda"},
+            {ID: "DMN0001004", Nome: "Aplicativo de acompanhamento operacional", Tipo: "Demanda"},
+            {ID: "DMN0001005", Nome: "Sincronismo entre sistemas corporativos", Tipo: "Demanda"},
+            {ID: "DMN0001006", Nome: "Relatório operacional consolidado", Tipo: "Demanda"},
+            {ID: "DMN0001007", Nome: "Ajuste de fluxo de aprovação", Tipo: "Demanda"},
+            {ID: "DMN0001008", Nome: "Gestão de obsolescência tecnológica", Tipo: "Demanda"},
+            {ID: "DMN0001009", Nome: "Automação de manutenção", Tipo: "Demanda"},
+            {ID: "DMN0001010", Nome: "Plataforma de dados analíticos", Tipo: "Demanda"},
+            {ID: "DMN0001011", Nome: "Segregação de usuários de serviço", Tipo: "Demanda"},
+            {ID: "DMN0001012", Nome: "Implantação de solução operacional", Tipo: "Demanda"},
+            {ID: "PROJ0002001", Nome: "Aplicativo operacional - Unidade A", Tipo: "Projeto"},
+            {ID: "PROJ0002002", Nome: "Manutenção inteligente", Tipo: "Projeto"},
+            {ID: "PROJ0002003", Nome: "Migração de plataforma de planejamento", Tipo: "Projeto"},
+            {ID: "PROJ0002004", Nome: "Ativação de assistente de IA", Tipo: "Projeto"},
+            {ID: "PROJ0002005", Nome: "Agente de manutenção com IA", Tipo: "Projeto"},
+            {ID: "PROJ0002006", Nome: "Implementação de integração de dados", Tipo: "Projeto"},
+            {ID: "PROJ0002007", Nome: "Correção de integração operacional", Tipo: "Projeto"},
+            {ID: "PROJ0002008", Nome: "Gestão de backlog operacional", Tipo: "Projeto"},
+            {ID: "PROJ0002009", Nome: "Manutenção inteligente - Fase 2", Tipo: "Projeto"},
+            {ID: "DMN0001013", Nome: "Assistente de reparo externo", Tipo: "Demanda"}
         )
         );
         ClearCollect(colV9Opcoes,{ID: "", Rotulo: "Nenhum vínculo"}); Collect(colV9Opcoes,ShowColumns(AddColumns(colV9Vinculos,Rotulo,ID & " | " & Nome),ID,Rotulo));
@@ -55,7 +55,7 @@ Screens:
           Control: GroupContainer@1.5.0
           Variant: ManualLayout
           Properties:
-            Fill: =RGBA(244,248,245,1)
+            Fill: =RGBA(247,249,252,1)
             Height: =Parent.Height
             Width: =Parent.Width - 230
             X: =230
@@ -73,7 +73,7 @@ Screens:
                   - lbListaPrincipalV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =34
@@ -118,7 +118,7 @@ Screens:
                         - lbLinhaFundoV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Fill: =If(ThisItem.AtividadeID = varEditandoAtividade.AtividadeID, RGBA(229,246,237,1), RGBA(248,251,249,1))
                               Font: =Font.'Segoe UI'
                               Height: =Parent.TemplateHeight - 4
@@ -131,7 +131,7 @@ Screens:
                         - lbGerLinhaNomeV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =26
@@ -159,7 +159,7 @@ Screens:
                         - icoV9EditarAtividade:
                             Control: Classic/Icon@2.5.0
                             Properties:
-                              Color: =RGBA(0,158,89,1)
+                              Color: =RGBA(34,193,238,1)
                               Height: =22
                               Icon: =Icon.Edit
                               OnSelect: |-
@@ -239,7 +239,7 @@ Screens:
                         - lbV9ColStatus:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =28
                               Size: =9
@@ -251,7 +251,7 @@ Screens:
                         - lbV9ColPrioridade:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =28
                               Size: =9
@@ -263,7 +263,7 @@ Screens:
                         - lbV9ColResponsavel:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =28
                               Size: =9
@@ -275,7 +275,7 @@ Screens:
                         - lbV9ColHoras:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =28
                               Size: =9
@@ -287,7 +287,7 @@ Screens:
                         - lbV9ColData:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =28
                               Size: =9
@@ -422,7 +422,7 @@ Screens:
                   - lbTituloTopoV7GerV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Size: =21
@@ -445,7 +445,7 @@ Screens:
                       Control: Label@2.5.1
                       Properties:
                         Align: =Align.Right
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =27
@@ -490,7 +490,7 @@ Screens:
             - lbGerSecaoV8:
                 Control: Label@2.5.1
                 Properties:
-                  Color: =RGBA(0,158,89,1)
+                  Color: =RGBA(34,193,238,1)
                   Font: =Font.'Segoe UI'
                   FontWeight: =FontWeight.Semibold
                   Height: =24
@@ -523,7 +523,7 @@ Screens:
                   - lbEdicaoTitleV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(11,47,35,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =32
@@ -546,7 +546,7 @@ Screens:
                   - lbFieldTituloV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -568,7 +568,7 @@ Screens:
                   - lbFieldDescricaoV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -591,7 +591,7 @@ Screens:
                   - lbGerLabel0V8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -615,7 +615,7 @@ Screens:
                   - lbGerLabel1V8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -639,7 +639,7 @@ Screens:
                   - lbGerLabel2V8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -663,7 +663,7 @@ Screens:
                   - lbGerHorasV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =22
@@ -685,7 +685,7 @@ Screens:
                   - lbGerPrazoV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -707,7 +707,7 @@ Screens:
                   - lbGerPessoaV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -736,7 +736,7 @@ Screens:
                         Align: =Align.Center
                         Color: =RGBA(255,255,255,1)
                         DisplayMode: =If(varGerenciando || IsBlank(varEditandoAtividade), DisplayMode.Disabled, DisplayMode.Edit)
-                        Fill: =RGBA(0,158,89,1)
+                        Fill: =RGBA(34,193,238,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =44
@@ -851,12 +851,17 @@ Screens:
                         DisplayFields: =["DisplayName"]
                         DisplayMode: =If(varGerenciando || IsBlank(varEditandoAtividade), DisplayMode.Disabled, DisplayMode.Edit)
                         Height: =36
-                        InputTextPlaceholder: ="Digite um nome ou e-mail..."
+                        InputTextPlaceholder: ="Digite 2 letras para buscar usuários ativos"
                         Items: |-
-                          =UsuáriosdoOffice365.SearchUserV2(
-                              {searchTerm: Self.SearchText}
-                          ).value
-                        SearchFields: =["DisplayName","Mail"]
+                          =If(
+                              Len(Trim(Self.SearchText)) < 1,
+                              colUsuariosDemo,
+                              Filter(
+                                  colUsuariosDemo,
+                                  StartsWith(DisplayName, Trim(Self.SearchText))
+                              )
+                          )
+                        SearchFields: =["DisplayName"]
                         SelectMultiple: =false
                         Width: =Parent.Width - 40
                         X: =20
@@ -864,7 +869,7 @@ Screens:
                   - lbGerLabel1V8_1:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =18
@@ -877,7 +882,7 @@ Screens:
                   - lbV9VinculoGerenciar:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         Height: =18
                         Size: =10
@@ -900,7 +905,7 @@ Screens:
                   - lbV9FecharEdicao:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(11,107,58,1)
+                        Color: =RGBA(46,102,168,1)
                         Height: =32
                         OnSelect: =Set(varV9EditorAberto,false)
                         Text: ="✕  Fechar"
@@ -930,7 +935,7 @@ Screens:
                         - lbGerTarefaModalTitleV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =32
@@ -955,9 +960,9 @@ Screens:
                         - lbGerTarefaFecharV8N:
                             Control: Classic/Button@2.2.0
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(244,248,246,1)
                               Font: =Font.'Segoe UI'
@@ -975,7 +980,7 @@ Screens:
                         - lbGerTarefaTituloLabelV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -988,13 +993,13 @@ Screens:
                         - txtGerTarefaTituloV8N:
                             Control: Classic/TextInput@2.3.2
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Default: =If(!IsBlank(varV9EditandoTarefa), Text(varV9EditandoTarefa.TituloTarefa),If(!IsBlank(varV9ReplicandoTarefa), Text(varV9ReplicandoTarefa.TituloTarefa),""))
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Font: =Font.'Segoe UI'
                               Height: =36
                               HintText: ="Digite o título da tarefa..."
@@ -1009,7 +1014,7 @@ Screens:
                         - lbGerTarefaStatusLabelV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -1022,20 +1027,20 @@ Screens:
                         - ddlGerTarefaStatusV8N:
                             Control: Classic/DropDown@2.3.1
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
                               ChevronBackground: =RGBA(255,255,255,1)
-                              ChevronFill: =RGBA(11,107,58,1)
-                              Color: =RGBA(11,47,35,1)
+                              ChevronFill: =RGBA(46,102,168,1)
+                              Color: =RGBA(21,32,51,1)
                               Default: =Coalesce(varV9EditandoTarefa.Status,varV9ReplicandoTarefa.Status,"Backlog")
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Font: =Font.'Segoe UI'
                               Height: =36
                               Items: =colStatus
                               Items.Value: =Value
-                              SelectionFill: =RGBA(18,161,80,1)
+                              SelectionFill: =RGBA(34,193,238,1)
                               Size: =12
                               Width: =lbGerTarefaStatusLabelV8N.Width
                               X: =lbGerTarefaStatusLabelV8N.X
@@ -1043,7 +1048,7 @@ Screens:
                         - lbGerTarefaPrioridadeLabelV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -1056,20 +1061,20 @@ Screens:
                         - ddlGerTarefaPrioridadeV8N:
                             Control: Classic/DropDown@2.3.1
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
                               ChevronBackground: =RGBA(255,255,255,1)
-                              ChevronFill: =RGBA(11,107,58,1)
-                              Color: =RGBA(11,47,35,1)
+                              ChevronFill: =RGBA(46,102,168,1)
+                              Color: =RGBA(21,32,51,1)
                               Default: =Coalesce(varV9EditandoTarefa.Priority,varV9ReplicandoTarefa.Priority,"Média")
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Font: =Font.'Segoe UI'
                               Height: =36
                               Items: =colPrioridade
                               Items.Value: =Value
-                              SelectionFill: =RGBA(18,161,80,1)
+                              SelectionFill: =RGBA(34,193,238,1)
                               Size: =12
                               Width: =lbGerTarefaPrioridadeLabelV8N.Width
                               X: =lbGerTarefaPrioridadeLabelV8N.X
@@ -1077,7 +1082,7 @@ Screens:
                         - lbGerTarefaHorasLabelV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -1090,13 +1095,13 @@ Screens:
                         - txtGerTarefaHorasV8N:
                             Control: Classic/TextInput@2.3.2
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Default: =If(!IsBlank(varV9EditandoTarefa), Text(varV9EditandoTarefa.EstimatedHoras),If(!IsBlank(varV9ReplicandoTarefa), Text(varV9ReplicandoTarefa.EstimatedHoras),""))
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Font: =Font.'Segoe UI'
                               Format: =TextFormat.Number
                               Height: =36
@@ -1113,7 +1118,7 @@ Screens:
                         - lbGerTarefaPrazoLabelV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -1126,17 +1131,17 @@ Screens:
                         - dtpGerTarefaPrazoV8N:
                             Control: Classic/DatePicker@2.6.0
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               DefaultDate: =If(!IsBlank(varV9EditandoTarefa), varV9EditandoTarefa.DueDate, Blank())
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Format: ="dd/mm/yyyy"
                               Height: =36
                               IconBackground: =RGBA(255,255,255,1)
-                              IconFill: =RGBA(11,107,58,1)
+                              IconFill: =RGBA(46,102,168,1)
                               InputTextPlaceholder: ="Selecionar data"
                               Size: =12
                               Width: =lbGerTarefaPrazoLabelV8N.Width
@@ -1162,7 +1167,7 @@ Screens:
                             Properties:
                               Color: =RGBA(255,255,255,1)
                               DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
-                              Fill: =RGBA(18,161,80,1)
+                              Fill: =RGBA(34,193,238,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =36
@@ -1227,18 +1232,9 @@ Screens:
                                                     Set(varGerTarefaErro, FirstError.Message)
                                                 );
                                                 If(
-                                                    IsBlank(varGerTarefaErro) && !IsBlank(varGerTarefaRegistroSalvo),
+                                                    IsBlank(varGerTarefaErro) && !IsBlank(varGerTarefaRegistroSalvo.TaskID),
                                                     RemoveIf(colGerTarefasPainel, TaskID = varGerTarefaNovaID);
-                                                    Collect(
-                                                        colGerTarefasPainel,
-                                                        Patch(
-                                                            varGerTarefaRegistroSalvo,
-                                                            {
-                                                                TaskID: varGerTarefaNovaID,
-                                                                AtividadeID: Text(varEditandoAtividade.AtividadeID)
-                                                            }
-                                                        )
-                                                    );
+                                                    Collect(colGerTarefasPainel, varGerTarefaRegistroSalvo);
                                                     Set(varGerTarefaErroLog, Blank());
                                                     IfError(
                                                         Patch(
@@ -1258,6 +1254,10 @@ Screens:
                                                             }
                                                         ),
                                                         Set(varGerTarefaErroLog, FirstError.Message)
+                                                    );
+                                                    IfError(
+                                                        Refresh(tbTarefas),
+                                                        Notify("Tarefa salva; atualização da conexão pendente.", NotificationType.Warning)
                                                     );
                                                     IfError(
                                                         Set(
@@ -1311,7 +1311,7 @@ Screens:
                         - lbGerTarefasContadorV8N:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =26
@@ -1333,75 +1333,62 @@ Screens:
                               - lbGerTarefaCabNomeV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =24
                                     Size: =9
                                     Text: ="TAREFA"
-                                    Width: =Parent.Width * 0.29
+                                    Width: =Parent.Width * 0.34
                                     X: =12
                                     Y: =3
                               - lbGerTarefaCabStatusV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =24
                                     Size: =9
                                     Text: ="STATUS"
-                                    Width: =Parent.Width * 0.105
-                                    X: =Parent.Width * 0.31
+                                    Width: =Parent.Width * 0.14
+                                    X: =Parent.Width * 0.38
                                     Y: =3
                               - lbGerTarefaCabHorasV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =24
                                     Size: =9
                                     Text: ="HORAS"
-                                    Width: =Parent.Width * 0.07
-                                    X: =Parent.Width * 0.425
+                                    Width: =Parent.Width * 0.08
+                                    X: =Parent.Width * 0.54
                                     Y: =3
                               - lbGerTarefaCabDataV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =24
                                     Size: =9
                                     Text: ="VENCIMENTO"
-                                    Width: =Parent.Width * 0.115
-                                    X: =Parent.Width * 0.505
+                                    Width: =Parent.Width * 0.13
+                                    X: =Parent.Width * 0.65
                                     Y: =3
                               - lbGerTarefaCabPrioridadeV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =24
                                     Size: =9
                                     Text: ="PRIORIDADE"
-                                    Width: =Parent.Width * 0.085
-                                    X: =Parent.Width * 0.625
-                                    Y: =3
-                              - lbGerTarefaCabResponsavelV9:
-                                  Control: Label@2.5.1
-                                  Properties:
-                                    Color: =RGBA(0,73,43,1)
-                                    Font: =Font.'Segoe UI'
-                                    FontWeight: =FontWeight.Semibold
-                                    Height: =24
-                                    Size: =9
-                                    Text: ="RESPONSÁVEL"
-                                    Width: =Max(50, Parent.Width - Self.X - 126)
-                                    Wrap: =false
-                                    X: =Parent.Width * 0.725
+                                    Width: =Parent.Width * 0.12
+                                    X: =Parent.Width * 0.79
                                     Y: =3
                         - galGerTarefasAtividadeV8N:
                             Control: Gallery@2.15.0
@@ -1427,13 +1414,13 @@ Screens:
                               - lbGerTarefaNomeV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Semibold
                                     Height: =34
                                     Size: =10
                                     Text: =ThisItem.TituloTarefa
-                                    Width: =Parent.TemplateWidth * 0.29
+                                    Width: =Parent.TemplateWidth * 0.34
                                     X: =12
                                     Y: =8
                               - lbGerTarefaSituacaoV8N:
@@ -1444,78 +1431,41 @@ Screens:
                                     Height: =32
                                     Size: =10
                                     Text: =ThisItem.Status
-                                    Width: =Parent.TemplateWidth * 0.105
-                                    X: =Parent.TemplateWidth * 0.31
+                                    Width: =Parent.TemplateWidth * 0.14
+                                    X: =Parent.TemplateWidth * 0.38
                                     Y: =9
                               - lbGerTarefaHorasV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     Height: =32
                                     Size: =10
                                     Text: =If(IsBlank(ThisItem.EstimatedHoras), "—", Text(ThisItem.EstimatedHoras) & " h")
-                                    Width: =Parent.TemplateWidth * 0.07
-                                    X: =Parent.TemplateWidth * 0.425
+                                    Width: =Parent.TemplateWidth * 0.08
+                                    X: =Parent.TemplateWidth * 0.54
                                     Y: =9
                               - lbGerTarefaDataV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     Height: =32
                                     Size: =10
-                                    Text: |-
-                                      =With(
-                                          {dataTexto: Trim(Text(ThisItem.DueDate))},
-                                          If(
-                                              IsBlank(dataTexto),
-                                              "—",
-                                              If(
-                                                  Len(dataTexto) >= 10 &&
-                                                  Mid(dataTexto, 5, 1) = "-" &&
-                                                  Mid(dataTexto, 8, 1) = "-",
-                                                  Mid(dataTexto, 9, 2) & "/" &
-                                                  Mid(dataTexto, 6, 2) & "/" &
-                                                  Left(dataTexto, 4),
-                                                  IfError(
-                                                      Text(DateValue(dataTexto, "pt-BR"), "dd/mm/yyyy"),
-                                                      "Data inválida"
-                                                  )
-                                              )
-                                          )
-                                      )
-                                    Width: =Parent.TemplateWidth * 0.115
-                                    X: =Parent.TemplateWidth * 0.505
+                                    Text: =If(IsBlank(ThisItem.DueDate), "—", Text(ThisItem.DueDate, "dd/mm/yyyy"))
+                                    Width: =Parent.TemplateWidth * 0.13
+                                    X: =Parent.TemplateWidth * 0.65
                                     Y: =9
                               - lbGerTarefaPrioridadeV8N:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     Height: =32
                                     Size: =10
                                     Text: =ThisItem.Priority
-                                    Width: =Parent.TemplateWidth * 0.085
-                                    X: =Parent.TemplateWidth * 0.625
-                                    Y: =9
-                              - lbGerTarefaResponsavelV9:
-                                  Control: Label@2.5.1
-                                  Properties:
-                                    Color: =RGBA(0,73,43,1)
-                                    Font: =Font.'Segoe UI'
-                                    Height: =32
-                                    Size: =10
-                                    Text: |-
-                                      =If(
-                                              IsBlank(ThisItem.Assigned),
-                                              "Não atribuído",
-                                              ThisItem.Assigned
-                                          )
-                                    Tooltip: =ThisItem.Assigned
-                                    Width: =Max(50, Parent.TemplateWidth - Self.X - 126)
-                                    Wrap: =false
-                                    X: =Parent.TemplateWidth * 0.725
+                                    Width: =Parent.TemplateWidth * 0.12
+                                    X: =Parent.TemplateWidth * 0.79
                                     Y: =9
                               - icoGerTarefaExcluirV8N:
                                   Control: Classic/Icon@2.5.0
@@ -1591,7 +1541,7 @@ Screens:
                               - btnGerTarefaNaoV8N:
                                   Control: Classic/Button@2.2.0
                                   Properties:
-                                    Color: =RGBA(0,73,43,1)
+                                    Color: =RGBA(21,32,51,1)
                                     DisplayMode: =If(varGerTarefaOperando, DisplayMode.Disabled, DisplayMode.Edit)
                                     Fill: =RGBA(255,255,255,1)
                                     Font: =Font.'Segoe UI'
@@ -1617,12 +1567,16 @@ Screens:
                                           Set(varGerTarefaOperando, true);
                                           Set(varGerTarefaErro, Blank());
                                           IfError(
-                                              RemoveIf(tbTarefas, TaskID = varGerTarefaExcluirID),
+                                              Remove(
+                                                  tbTarefas,
+                                                  LookUp(tbTarefas, TaskID = varGerTarefaExcluirID)
+                                              ),
                                               Set(varGerTarefaErro, FirstError.Message)
                                           );
                                           If(
                                               IsBlank(varGerTarefaErro),
                                               RemoveIf(colGerTarefasPainel, TaskID = varGerTarefaExcluirID);
+                                              Refresh(tbTarefas);
                                               IfError(Set(varV9AtividadeHoras,Patch(tbAtividades,LookUp(tbAtividades,AtividadeID = varEditandoAtividade.AtividadeID),{EstimatedHoras: Sum(colGerTarefasPainel, Coalesce(EstimatedHoras, 0)),AtualizadoEm:Now()}));Set(varEditandoAtividade,varV9AtividadeHoras);UpdateIf(colGerAtividades,AtividadeID=varV9AtividadeHoras.AtividadeID,{EstimatedHoras:varV9AtividadeHoras.EstimatedHoras}),Notify("Não foi possível sincronizar as horas da atividade.",NotificationType.Warning));
                                               Set(varGerTarefaErroLog, Blank());
                                               IfError(
@@ -1649,9 +1603,9 @@ Screens:
                                               If(
                                                   !IsBlank(varGerTarefaErroLog),
                                                   Notify("Tarefa excluída; falha no log: " & varGerTarefaErroLog, NotificationType.Warning),
-                                                  Notify("Exclusão enviada ao Excel. A atualização da fonte pode levar até 30 segundos.", NotificationType.Information)
+                                                  Notify("Tarefa excluída com sucesso.", NotificationType.Success)
                                               ),
-                                              Notify("Exclusão não confirmada: " & varGerTarefaErro & ". Consulte a tabela Excel antes de tentar novamente.", NotificationType.Error)
+                                              Notify("Erro ao excluir tarefa: " & varGerTarefaErro, NotificationType.Error)
                                           );
                                           Set(varGerTarefaOperando, false)
                                       )
@@ -1677,7 +1631,7 @@ Screens:
                         - lbV9RespAtivoRotulo:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(11,47,35,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Bold
                               Height: =18
@@ -1691,24 +1645,29 @@ Screens:
                         - cmbV9ResponsavelTarefa:
                             Control: Classic/ComboBox@2.4.0
                             Properties:
-                              BorderColor: =RGBA(201,214,206,1)
+                              BorderColor: =RGBA(219,229,240,1)
                               BorderThickness: =1
                               ChevronBackground: =RGBA(255,255,255,1)
-                              ChevronFill: =RGBA(11,107,58,1)
-                              Color: =RGBA(11,47,35,1)
+                              ChevronFill: =RGBA(46,102,168,1)
+                              Color: =RGBA(21,32,51,1)
                               DisplayFields: =["DisplayName"]
                               DisplayMode: =If(varGerTarefaOperando,DisplayMode.Disabled,DisplayMode.Edit)
                               Fill: =RGBA(255,255,255,1)
-                              FocusedBorderColor: =RGBA(18,161,80,1)
+                              FocusedBorderColor: =RGBA(34,193,238,1)
                               Height: =36
-                              InputTextPlaceholder: ="Digite um nome ou e-mail..."
+                              InputTextPlaceholder: ="Digite 2 letras para buscar usuários ativos"
                               Items: |-
-                                =UsuáriosdoOffice365.SearchUserV2(
-                                    {searchTerm: Self.SearchText}
-                                ).value
-                              SearchFields: =["DisplayName","Mail"]
+                                =If(
+                                    Len(Trim(Self.SearchText)) < 1,
+                                    colUsuariosDemo,
+                                    Filter(
+                                        colUsuariosDemo,
+                                        StartsWith(DisplayName, Trim(Self.SearchText))
+                                    )
+                                )
+                              SearchFields: =["DisplayName"]
                               SelectMultiple: =false
-                              SelectionFill: =RGBA(18,161,80,1)
+                              SelectionFill: =RGBA(34,193,238,1)
                               Size: =12
                               Width: =Parent.Width - Self.X - 24
                               X: =ddlGerTarefaPrioridadeV8N.X + ddlGerTarefaPrioridadeV8N.Width + 12
@@ -1751,7 +1710,7 @@ Screens:
                         - lbModalTitleV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =38
@@ -1775,7 +1734,7 @@ Screens:
                             Control: Label@2.5.1
                             Properties:
                               Align: =Align.Center
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Fill: =RGBA(238,245,241,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
@@ -1800,69 +1759,103 @@ Screens:
                                     varGerenciando = true || IsBlank(varAtividadeExclusaoID),
                                     Notify("Nenhuma atividade selecionada para exclusão.", NotificationType.Warning),
                                     Set(varGerenciando, true);
+                                    ClearCollect(colGerErros, {Mensagem: ""});
+                                    Clear(colGerErros);
                                     Set(varErroExclusao, Blank());
-                                    // O Excel não oferece exclusão em cascata transacional.
-                                    // Remover tarefas pelo vínculo primeiro; se falhar, não remover a atividade.
                                     IfError(
-                                        RemoveIf(tbTarefas, AtividadeID = varAtividadeExclusaoID),
+                                        Refresh(tbTarefas);
+                                        ClearCollect(
+                                            colGerTarefasExcluir,
+                                            Filter(tbTarefas, AtividadeID = varAtividadeExclusaoID)
+                                        );
+                                        Blank(),
                                         Set(varErroExclusao, FirstError.Message);
                                         Blank()
                                     );
                                     If(
                                         IsBlank(varErroExclusao),
+                                        ForAll(
+                                            colGerTarefasExcluir As tarefa,
+                                            IfError(
+                                                Remove(tbTarefas, LookUp(tbTarefas, TaskID = tarefa.TaskID)),
+                                                Collect(colGerErros, {Mensagem: FirstError.Message});
+                                                Blank()
+                                            )
+                                        );
                                         IfError(
-                                            RemoveIf(tbAtividades, AtividadeID = varAtividadeExclusaoID),
+                                            Refresh(tbTarefas);
+                                            ClearCollect(
+                                                colGerTarefasExcluir,
+                                                Filter(tbTarefas, AtividadeID = varAtividadeExclusaoID)
+                                            );
+                                            Blank(),
                                             Set(varErroExclusao, FirstError.Message);
                                             Blank()
                                         )
                                     );
                                     If(
-                                        IsBlank(varErroExclusao),
-                                        Set(varErroLog, Blank());
-                                        IfError(
-                                            Patch(
-                                                tbLogAtividades,
-                                                Defaults(tbLogAtividades),
-                                                {
-                                                    LogID: Text(GUID()),
-                                                    AtividadeID: varAtividadeExclusaoID,
-                                                    RegistroID: varAtividadeExclusaoID,
-                                                    Entidade: "Atividade",
-                                                    Operacao: "Excluir",
-                                                    Usuario: User().FullName,
-                                                    EmailUsuario: User().Email,
-                                                    DataHora: Now(),
-                                                    Detalhes: "Atividade excluída: " & varEditandoAtividade.Titulo,
-                                                    Resultado: "Sucesso"
-                                                }
-                                            ),
-                                            Set(varErroLog, FirstError.Message);
-                                            Blank()
-                                        );
-                                        // Atualiza imediatamente a lista local. Não consulta a fonte de novo
-                                        // aqui porque o Excel pode ainda devolver os registros antigos.
-                                        RemoveIf(colGerAtividades, AtividadeID = varAtividadeExclusaoID);
-                                        Clear(colGerTarefasPainel);
-                                        Clear(colGerTarefasExcluir);
-                                        Set(varEditandoAtividade, Blank());
-                                        Set(varConfirmarExclusao, false);
-                                        Set(varGerTarefasAberto, false);
-                                        Set(varV9EditorAberto, false);
-                                        Set(varAtividadeExclusaoID, Blank());
-                                        If(
-                                            IsBlank(varErroLog),
-                                            Notify(
-                                                "Solicitação de exclusão enviada. Consulte o Excel após a sincronização para confirmar todas as linhas.",
-                                                NotificationType.Information
-                                            ),
-                                            Notify(
-                                                "Solicitação de exclusão enviada; auditoria não registrada: " & varErroLog,
-                                                NotificationType.Warning
-                                            )
-                                        ),
+                                        CountRows(colGerErros) > 0 || !IsBlank(varErroExclusao) || CountRows(colGerTarefasExcluir) > 0,
                                         Notify(
-                                            "Exclusão não confirmada: " & varErroExclusao & ". Confira o Excel antes de tentar novamente.",
+                                            "Não foi possível excluir todas as tarefas. A atividade foi preservada. " &
+                                            If(CountRows(colGerErros) > 0, First(colGerErros).Mensagem, Coalesce(varErroExclusao, "Ainda existem tarefas vinculadas.")),
                                             NotificationType.Error
+                                        ),
+                                        IfError(
+                                            Remove(
+                                                tbAtividades,
+                                                LookUp(tbAtividades, AtividadeID = varAtividadeExclusaoID)
+                                            ),
+                                            Set(varErroExclusao, FirstError.Message)
+                                        );
+                                        If(IsBlank(varErroExclusao),
+                                            IfError(
+                                                Refresh(tbAtividades);
+                                                Refresh(tbTarefas),
+                                                Set(varErroExclusao, FirstError.Message)
+                                            )
+                                        );
+                                        If(
+                                            IsBlank(varErroExclusao) &&
+                                            IsBlank(LookUp(tbAtividades, AtividadeID = varAtividadeExclusaoID)) &&
+                                            IsBlank(LookUp(tbTarefas, AtividadeID = varAtividadeExclusaoID)),
+                                            Set(varErroLog, Blank());
+                                            IfError(
+                                                Patch(
+                                                    tbLogAtividades,
+                                                    Defaults(tbLogAtividades),
+                                                    {
+                                                        LogID: Text(GUID()),
+                                                        AtividadeID: varAtividadeExclusaoID,
+                                                        RegistroID: varAtividadeExclusaoID,
+                                                        Entidade: "Atividade",
+                                                        Operacao: "Excluir",
+                                                        Usuario: User().FullName,
+                                                        EmailUsuario: User().Email,
+                                                        DataHora: Now(),
+                                                        Detalhes: "Atividade excluída: " & varEditandoAtividade.Titulo,
+                                                        Resultado: "Sucesso"
+                                                    }
+                                                ),
+                                                Set(varErroLog, FirstError.Message)
+                                            );
+                                            ClearCollect(colGerAtividades, tbAtividades);
+                                            Clear(colGerTarefasPainel);
+                                            Clear(colGerTarefasExcluir);
+                                            Set(varEditandoAtividade, Blank());
+                                            Set(varConfirmarExclusao, false);
+                                            Set(varGerTarefasAberto, false);
+                                            Set(varV9EditorAberto, false);
+                                            Set(varAtividadeExclusaoID, Blank());
+                                            If(
+                                                IsBlank(varErroLog),
+                                                Notify("Atividade e " & varQtdTarefasExcluir & " tarefa(s) excluída(s) com sucesso.", NotificationType.Success),
+                                                Notify("Exclusão confirmada; falha ao registrar auditoria: " & varErroLog, NotificationType.Warning)
+                                            ),
+                                            Notify(
+                                                "Não foi possível confirmar a exclusão de todos os registros. " &
+                                                Coalesce(varErroExclusao, "Consulte os arquivos Excel antes de repetir a operação."),
+                                                NotificationType.Error
+                                            )
                                         )
                                     );
                                     Set(varGerenciando, false)
@@ -1876,7 +1869,7 @@ Screens:
           Control: GroupContainer@1.5.0
           Variant: ManualLayout
           Properties:
-            Fill: =RGBA(0,60,39,1)
+            Fill: =RGBA(12,35,72,1)
             Height: =Parent.Height
             Width: =230
           Children:
@@ -1884,15 +1877,16 @@ Screens:
                 Control: Image@2.2.3
                 Properties:
                   Height: =370
-                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  Image: =Blank()
                   ImagePosition: =ImagePosition.Fill
                   Width: =Parent.Width
                   Y: =398
             - imgLogoV7GerV8:
                 Control: Image@2.2.3
                 Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
                   Height: =99
-                  Image: =PowerApps_Logo_Branca_Referencia
+                  Image: =PS
                   Width: =230
             - lbMenuLegendaV7GerV8:
                 Control: Label@2.5.1
@@ -1910,7 +1904,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
@@ -1924,7 +1918,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrRegistroV8, ScreenTransition.Fade)
@@ -1938,7 +1932,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,158,89,1)
+                  Fill: =RGBA(34,193,238,1)
                   Font: =Font.'Segoe UI'
                   FontWeight: =FontWeight.Semibold
                   Height: =44
@@ -1952,7 +1946,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(varMenuRelatoriosAberto, RGBA(0,158,89,1), RGBA(0,60,39,1))
+                  Fill: =If(varMenuRelatoriosAberto, RGBA(34,193,238,1), RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Set(varMenuRelatoriosAberto, !Coalesce(varMenuRelatoriosAberto,false))
@@ -1966,7 +1960,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrConfiguracoesV8, ScreenTransition.Fade)
@@ -1979,11 +1973,11 @@ Screens:
             - lbMenuFooterV7GerV8:
                 Control: Label@2.5.1
                 Properties:
-                  Color: =RGBA(210,233,218,1)
+                  Color: =RGBA(219,229,240,1)
                   Font: =Font.'Segoe UI'
                   Height: =23
                   Size: =8
-                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Text: ="WORKTASKS  •  PS QUALIDADE"
                   Visible: =false
                   Width: =200
                   X: =17
@@ -1992,7 +1986,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(34,193,238,1),RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =38
                   OnSelect: =Navigate(scrRelatoriosV8,ScreenTransition.Fade)
@@ -2006,7 +2000,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(34,193,238,1),RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =38
                   OnSelect: =Navigate(scrKanbanTarefasV8,ScreenTransition.Fade)

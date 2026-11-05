@@ -9,7 +9,7 @@
 Screens:
   scrConfiguracoesV8:
     Properties:
-      Fill: =RGBA(244,248,245,1)
+      Fill: =RGBA(247,249,252,1)
       OnVisible: |-
         =Set(varErroAuditoria, Blank());
         IfError(
@@ -27,7 +27,7 @@ Screens:
           Control: GroupContainer@1.5.0
           Variant: ManualLayout
           Properties:
-            Fill: =RGBA(0,60,39,1)
+            Fill: =RGBA(12,35,72,1)
             Height: =Parent.Height
             Width: =230
           Children:
@@ -35,15 +35,16 @@ Screens:
                 Control: Image@2.2.3
                 Properties:
                   Height: =370
-                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  Image: =Blank()
                   ImagePosition: =ImagePosition.Fill
                   Width: =Parent.Width
                   Y: =398
             - imgLogoV7CfgV8:
                 Control: Image@2.2.3
                 Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
                   Height: =99
-                  Image: =PowerApps_Logo_Branca_Referencia
+                  Image: =PS
                   Width: =230
             - lbMenuLegendaV7CfgV8:
                 Control: Label@2.5.1
@@ -61,7 +62,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
@@ -75,7 +76,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrRegistroV8, ScreenTransition.Fade)
@@ -89,7 +90,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrGerenciarV8, ScreenTransition.Fade)
@@ -103,7 +104,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrRelatoriosV8, ScreenTransition.Fade)
@@ -117,7 +118,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,158,89,1)
+                  Fill: =RGBA(34,193,238,1)
                   Font: =Font.'Segoe UI'
                   FontWeight: =FontWeight.Semibold
                   Height: =44
@@ -130,11 +131,11 @@ Screens:
             - lbMenuFooterV7CfgV8:
                 Control: Label@2.5.1
                 Properties:
-                  Color: =RGBA(210,233,218,1)
+                  Color: =RGBA(219,229,240,1)
                   Font: =Font.'Segoe UI'
                   Height: =23
                   Size: =8
-                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Text: ="WORKTASKS  •  PS QUALIDADE"
                   Visible: =false
                   Width: =200
                   X: =17
@@ -143,7 +144,7 @@ Screens:
           Control: GroupContainer@1.5.0
           Variant: ManualLayout
           Properties:
-            Fill: =RGBA(244,248,245,1)
+            Fill: =RGBA(247,249,252,1)
             Height: =Parent.Height
             Width: =Parent.Width - 230
             X: =230
@@ -159,7 +160,7 @@ Screens:
                   - lbTituloTopoV7CfgV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Size: =21
@@ -182,7 +183,7 @@ Screens:
                       Control: Label@2.5.1
                       Properties:
                         Align: =Align.Right
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =27
@@ -227,7 +228,7 @@ Screens:
             - lbCfgSecV8:
                 Control: Label@2.5.1
                 Properties:
-                  Color: =RGBA(0,158,89,1)
+                  Color: =RGBA(34,193,238,1)
                   Font: =Font.'Segoe UI'
                   FontWeight: =FontWeight.Semibold
                   Height: =27
@@ -261,7 +262,7 @@ Screens:
                   - lbCfgConnNameV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =30
@@ -305,7 +306,7 @@ Screens:
                   - lbCfgContaNomeV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =30
@@ -337,7 +338,7 @@ Screens:
                   - lbHistTituloV8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =39
@@ -361,7 +362,7 @@ Screens:
                       Control: Label@2.5.1
                       Properties:
                         Align: =Align.Center
-                        Color: =RGBA(0,158,89,1)
+                        Color: =RGBA(34,193,238,1)
                         Fill: =RGBA(238,245,241,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
@@ -395,7 +396,7 @@ Screens:
                         - lbHOpV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =25
@@ -407,7 +408,7 @@ Screens:
                         - lbHAlvoV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =25
@@ -419,7 +420,7 @@ Screens:
                         - lbHUserV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =25
@@ -431,7 +432,7 @@ Screens:
                         - lbHHoraV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Height: =25
@@ -467,7 +468,7 @@ Screens:
                         - lbHistFundoV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Fill: =RGBA(248,251,249,1)
                               Font: =Font.'Segoe UI'
                               Height: =58
@@ -479,7 +480,7 @@ Screens:
                         - lbHistOpV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =If(ThisItem.Operacao = "Excluir", RGBA(175,54,63,1), RGBA(0,73,43,1))
+                              Color: =If(ThisItem.Operacao = "Excluir", RGBA(175,54,63,1), RGBA(21,32,51,1))
                               Font: =Font.'Segoe UI'
                               FontWeight: =FontWeight.Semibold
                               Size: =10
@@ -490,7 +491,7 @@ Screens:
                         - lbHistRegistroV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Height: =43
                               Size: =9.5
@@ -501,7 +502,7 @@ Screens:
                         - lbHistUsuarioV8:
                             Control: Label@2.5.1
                             Properties:
-                              Color: =RGBA(0,73,43,1)
+                              Color: =RGBA(21,32,51,1)
                               Font: =Font.'Segoe UI'
                               Size: =9.5
                               Text: =Coalesce(Text(ThisItem.Usuario), "—")
@@ -514,37 +515,7 @@ Screens:
                               Color: =RGBA(100,117,109,1)
                               Font: =Font.'Segoe UI'
                               Size: =9.5
-                              Text: |
-                                =
-                                With(
-                                    {
-                                        _valor: Text(ThisItem.DataHora)
-                                    },
-                                    If(
-                                        IsBlank(_valor),
-                                        "—",
-                                        IfError(
-                                            If(
-                                                IsMatch(_valor, "^[0-9]+([.,][0-9]+)?$"),
-                                                Text(
-                                                    DateAdd(
-                                                        DateValue("30/12/1899", "pt-BR"),
-                                                        Value(_valor, "en-US") * 86400,
-                                                        TimeUnit.Seconds
-                                                    ),
-                                                    "dd/mm/yyyy hh:mm",
-                                                    "pt-BR"
-                                                ),
-                                                Text(
-                                                    DateTimeValue(_valor, "pt-BR"),
-                                                    "dd/mm/yyyy hh:mm",
-                                                    "pt-BR"
-                                                )
-                                            ),
-                                            _valor
-                                        )
-                                    )
-                                )
+                              Text: =IfError(Text(DateTimeValue(Text(ThisItem.DataHora)), "dd/mm/yyyy hh:mm"), Text(ThisItem.DataHora))
                               Width: =Parent.TemplateWidth * 0.19
                               X: =Parent.TemplateWidth * 0.78
                               Y: =10

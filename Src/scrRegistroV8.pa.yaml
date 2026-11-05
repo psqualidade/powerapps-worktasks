@@ -25,28 +25,28 @@ Screens:
         );
         If(IsEmpty(colV9Vinculos),
         ClearCollect(colV9Vinculos,
-            {ID: "DMN0003782", Nome: "ATR - Nova Plataforma de Gestão de Projetos", Tipo: "Demanda"},
-            {ID: "DMN0003820", Nome: "ATR - Implementação Plataforma Documentação Técnica", Tipo: "Demanda"},
-            {ID: "DMN0004315", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Demanda"},
-            {ID: "DMN0004503", Nome: "ATR - Aplicativo de acompanhamento de custos de manutenção.", Tipo: "Demanda"},
-            {ID: "DMN0004596", Nome: "ATR - Sincronismo de ativo entre os módulos SAP AA x PM", Tipo: "Demanda"},
-            {ID: "DMN0004848", Nome: "ATR - Relatório para Consulta de Pedidos ZREM", Tipo: "Demanda"},
-            {ID: "DMN0004925", Nome: "ATR - Ajuste do fluxo de aprovação Nota M6", Tipo: "Demanda"},
-            {ID: "DMN0005058", Nome: "ATR -  Gestão da Obsolescência e Ativos de TA", Tipo: "Demanda"},
-            {ID: "DMN0005075", Nome: "ATR - Smart RCM 5.0", Tipo: "Demanda"},
-            {ID: "DMN0005201", Nome: "ATR - Plataforma Databricks para Inteligência Industrial", Tipo: "Demanda"},
-            {ID: "DMN0005236", Nome: "ATR - Segregação de Usuários de Serviços para PI - MA e ORT", Tipo: "Demanda"},
-            {ID: "DMN0005313", Nome: "ATR - Implantação Sigga | Empower", Tipo: "Demanda"},
-            {ID: "PROJ0033098", Nome: "ATR - Aplicativo Xilômetro - PUMA", Tipo: "Projeto"},
-            {ID: "PROJ0060015_", Nome: "ATR - Manutenção Inteligente (Futurai)", Tipo: "Projeto"},
-            {ID: "PROJ0082265", Nome: "ATR - Migração PWA_Planner – SDP2013 & Ajuste KPG", Tipo: "Projeto"},
-            {ID: "PROJ0091417", Nome: "ATR - Ativação Joule - IA SAP PM", Tipo: "Projeto"},
-            {ID: "PROJ0091830", Nome: "ATR - Agente de Manutenção - Dharma IA", Tipo: "Projeto"},
-            {ID: "PROJ0095299", Nome: "ATR - Implementação PI Agent Connect", Tipo: "Projeto"},
-            {ID: "PROJ0099061", Nome: "ATR - Correção da Integração de Ordens de Manutenção entre SAP e Isoplan", Tipo: "Projeto"},
-            {ID: "PROJ0103899", Nome: "Smart - Backlog B - ATR", Tipo: "Projeto"},
-            {ID: "PROJ0107388", Nome: "ATR - Manutenção inteligente - Fase 2", Tipo: "Projeto"},
-            {ID: "DMN0005356", Nome: "ATR - Assistente de reparo externo", Tipo: "Demanda"}
+            {ID: "DMN0001001", Nome: "Automação de processo operacional", Tipo: "Demanda"},
+            {ID: "DMN0001002", Nome: "Melhoria de indicadores gerenciais", Tipo: "Demanda"},
+            {ID: "DMN0001003", Nome: "Manutenção inteligente - Fase 2", Tipo: "Demanda"},
+            {ID: "DMN0001004", Nome: "Aplicativo de acompanhamento operacional", Tipo: "Demanda"},
+            {ID: "DMN0001005", Nome: "Sincronismo entre sistemas corporativos", Tipo: "Demanda"},
+            {ID: "DMN0001006", Nome: "Relatório operacional consolidado", Tipo: "Demanda"},
+            {ID: "DMN0001007", Nome: "Ajuste de fluxo de aprovação", Tipo: "Demanda"},
+            {ID: "DMN0001008", Nome: "Gestão de obsolescência tecnológica", Tipo: "Demanda"},
+            {ID: "DMN0001009", Nome: "Automação de manutenção", Tipo: "Demanda"},
+            {ID: "DMN0001010", Nome: "Plataforma de dados analíticos", Tipo: "Demanda"},
+            {ID: "DMN0001011", Nome: "Segregação de usuários de serviço", Tipo: "Demanda"},
+            {ID: "DMN0001012", Nome: "Implantação de solução operacional", Tipo: "Demanda"},
+            {ID: "PROJ0002001", Nome: "Aplicativo operacional - Unidade A", Tipo: "Projeto"},
+            {ID: "PROJ0002002", Nome: "Manutenção inteligente", Tipo: "Projeto"},
+            {ID: "PROJ0002003", Nome: "Migração de plataforma de planejamento", Tipo: "Projeto"},
+            {ID: "PROJ0002004", Nome: "Ativação de assistente de IA", Tipo: "Projeto"},
+            {ID: "PROJ0002005", Nome: "Agente de manutenção com IA", Tipo: "Projeto"},
+            {ID: "PROJ0002006", Nome: "Implementação de integração de dados", Tipo: "Projeto"},
+            {ID: "PROJ0002007", Nome: "Correção de integração operacional", Tipo: "Projeto"},
+            {ID: "PROJ0002008", Nome: "Gestão de backlog operacional", Tipo: "Projeto"},
+            {ID: "PROJ0002009", Nome: "Manutenção inteligente - Fase 2", Tipo: "Projeto"},
+            {ID: "DMN0001013", Nome: "Assistente de reparo externo", Tipo: "Demanda"}
         )
         );
         ClearCollect(colV9Opcoes,{ID: "", Rotulo: "Nenhum vínculo"}); Collect(colV9Opcoes,ShowColumns(AddColumns(colV9Vinculos,Rotulo,ID & " | " & Nome),ID,Rotulo));
@@ -56,7 +56,7 @@ Screens:
           Control: GroupContainer@1.5.0
           Variant: ManualLayout
           Properties:
-            Fill: =RGBA(0,60,39,1)
+            Fill: =RGBA(12,35,72,1)
             Height: =Parent.Height
             Width: =230
           Children:
@@ -64,15 +64,16 @@ Screens:
                 Control: Image@2.2.3
                 Properties:
                   Height: =370
-                  Image: =PowerApps_Fundo_Floresta_Referencia
+                  Image: =Blank()
                   ImagePosition: =ImagePosition.Fill
                   Width: =Parent.Width
                   Y: =398
             - imgLogoV7IniReg7V8:
                 Control: Image@2.2.3
                 Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
                   Height: =99
-                  Image: =PowerApps_Logo_Branca_Referencia
+                  Image: =PS
                   Width: =230
             - lbMenuLegendaV7IniReg7V8:
                 Control: Label@2.5.1
@@ -90,7 +91,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrInicioV8, ScreenTransition.Fade)
@@ -104,7 +105,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,158,89,1)
+                  Fill: =RGBA(34,193,238,1)
                   Font: =Font.'Segoe UI'
                   FontWeight: =FontWeight.Semibold
                   Height: =44
@@ -118,7 +119,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrGerenciarV8, ScreenTransition.Fade)
@@ -132,7 +133,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(varMenuRelatoriosAberto, RGBA(0,158,89,1), RGBA(0,60,39,1))
+                  Fill: =If(varMenuRelatoriosAberto, RGBA(34,193,238,1), RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Set(varMenuRelatoriosAberto, !Coalesce(varMenuRelatoriosAberto,false))
@@ -146,7 +147,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =RGBA(0,60,39,1)
+                  Fill: =RGBA(12,35,72,1)
                   Font: =Font.'Segoe UI'
                   Height: =44
                   OnSelect: =Navigate(scrConfiguracoesV8, ScreenTransition.Fade)
@@ -159,11 +160,11 @@ Screens:
             - lbMenuFooterV7IniReg7V8:
                 Control: Label@2.5.1
                 Properties:
-                  Color: =RGBA(210,233,218,1)
+                  Color: =RGBA(219,229,240,1)
                   Font: =Font.'Segoe UI'
                   Height: =23
                   Size: =8
-                  Text: ="KLABIN  •  REGISTRO DE ATIVIDADES"
+                  Text: ="WORKTASKS  •  PS QUALIDADE"
                   Visible: =false
                   Width: =200
                   X: =17
@@ -172,7 +173,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Fill: =If(App.ActiveScreen.Name = "scrRelatoriosV8",RGBA(34,193,238,1),RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =38
                   OnSelect: =Navigate(scrRelatoriosV8,ScreenTransition.Fade)
@@ -186,7 +187,7 @@ Screens:
                 Control: Label@2.5.1
                 Properties:
                   Color: =RGBA(255,255,255,1)
-                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(18,161,80,1),RGBA(0,60,39,1))
+                  Fill: =If(App.ActiveScreen.Name = "scrKanbanTarefasV8",RGBA(34,193,238,1),RGBA(12,35,72,1))
                   Font: =Font.'Segoe UI'
                   Height: =38
                   OnSelect: =Navigate(scrKanbanTarefasV8,ScreenTransition.Fade)
@@ -216,7 +217,7 @@ Screens:
                   - lbTituloTopoV7IniReg7V8:
                       Control: Label@2.5.1
                       Properties:
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Size: =19
@@ -231,7 +232,7 @@ Screens:
                         Font: =Font.'Segoe UI'
                         Height: =24
                         Size: =10.5
-                        Text: ="Atividades não contabilizadas no SPM"
+                        Text: ="Atividades não contabilizadas no sistema corporativo"
                         Width: =375
                         X: =28
                         Y: =55
@@ -239,7 +240,7 @@ Screens:
                       Control: Label@2.5.1
                       Properties:
                         Align: =Align.Right
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Font: =Font.'Segoe UI'
                         FontWeight: =FontWeight.Semibold
                         Height: =27
@@ -264,7 +265,7 @@ Screens:
                       Control: Classic/TextInput@2.3.2
                       Properties:
                         BorderColor: =RGBA(214,227,219,1)
-                        Color: =RGBA(0,73,43,1)
+                        Color: =RGBA(21,32,51,1)
                         Default: =""
                         DelayOutput: =true
                         Fill: =RGBA(246,249,247,1)
@@ -316,9 +317,10 @@ Screens:
                         Fill: =RGBA(255,255,255,1)
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutGap: =6
+                        LayoutGap: =8
                         LayoutMinHeight: =0
                         LayoutMinWidth: =0
+                        LayoutOverflowY: =LayoutOverflow.Scroll
                         PaddingBottom: =16
                         PaddingLeft: =16
                         PaddingRight: =16
@@ -344,7 +346,7 @@ Screens:
                               - lbIconeNovaReg7V8:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(18,161,80,1)
+                                    Color: =RGBA(34,193,238,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
                                     Height: =32
@@ -356,7 +358,7 @@ Screens:
                               - lbNovaAtividadeReg7V8:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     FillPortions: =1
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
@@ -391,7 +393,7 @@ Screens:
                                     - lbStatusReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -411,7 +413,7 @@ Screens:
                                           - radStatusReg7V8:
                                               Control: Classic/Radio@2.3.0
                                               Properties:
-                                                Color: =RGBA(11,47,35,1)
+                                                Color: =RGBA(21,32,51,1)
                                                 Default: ="Backlog"
                                                 DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                                 Fill: =RGBA(255,255,255,1)
@@ -437,7 +439,7 @@ Screens:
                                     - lbComplexidadeReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -448,16 +450,16 @@ Screens:
                                     - ddlComplexidadeReg7V8:
                                         Control: Classic/DropDown@2.3.1
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
                                           ChevronBackground: =RGBA(255,255,255,1)
-                                          ChevronFill: =RGBA(11,107,58,1)
-                                          Color: =RGBA(11,47,35,1)
+                                          ChevronFill: =RGBA(46,102,168,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Default: ="Média"
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           Items: =Table({Value:"Baixa"}, {Value:"Média"}, {Value:"Alta"})
@@ -479,7 +481,7 @@ Screens:
                               - lbTituloCampoReg7V8:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
                                     Height: =18
@@ -490,14 +492,14 @@ Screens:
                               - txtTituloReg7V8:
                                   Control: Classic/TextInput@2.3.2
                                   Properties:
-                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderColor: =RGBA(219,229,240,1)
                                     BorderThickness: =1
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Default: =""
                                     DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                     Fill: =RGBA(255,255,255,1)
                                     FillPortions: =1
-                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    FocusedBorderColor: =RGBA(34,193,238,1)
                                     Font: =Font.'Segoe UI'
                                     Height: =36
                                     HintText: ="Digite um título para a atividade..."
@@ -513,16 +515,16 @@ Screens:
                             Variant: AutoLayout
                             Properties:
                               FillPortions: =0
-                              Height: =86
+                              Height: =106
                               LayoutDirection: =LayoutDirection.Vertical
                               LayoutGap: =4
-                              LayoutMinHeight: =86
+                              LayoutMinHeight: =106
                               Width: =Parent.Width - 32
                             Children:
                               - lbDescricaoCampoReg7V8:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
                                     Height: =18
@@ -533,18 +535,18 @@ Screens:
                               - txtDescricaoReg7V8:
                                   Control: Classic/TextInput@2.3.2
                                   Properties:
-                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderColor: =RGBA(219,229,240,1)
                                     BorderThickness: =1
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Default: =""
                                     DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                     Fill: =RGBA(255,255,255,1)
                                     FillPortions: =1
-                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    FocusedBorderColor: =RGBA(34,193,238,1)
                                     Font: =Font.'Segoe UI'
-                                    Height: =60
+                                    Height: =80
                                     HintText: ="Descreva a atividade, incluindo objetivo, contexto e resultados esperados..."
-                                    LayoutMinHeight: =60
+                                    LayoutMinHeight: =80
                                     Mode: =TextMode.MultiLine
                                     RadiusBottomLeft: =6
                                     RadiusBottomRight: =6
@@ -577,7 +579,7 @@ Screens:
                                     - lbAssignedADReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -588,26 +590,31 @@ Screens:
                                     - cmbAssignedReg7V8:
                                         Control: Classic/ComboBox@2.4.0
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
                                           ChevronBackground: =RGBA(255,255,255,1)
-                                          ChevronFill: =RGBA(11,107,58,1)
-                                          Color: =RGBA(11,47,35,1)
+                                          ChevronFill: =RGBA(46,102,168,1)
+                                          Color: =RGBA(21,32,51,1)
                                           DisplayFields: =["DisplayName"]
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
-                                          InputTextPlaceholder: ="Digite um nome ou e-mail..."
+                                          InputTextPlaceholder: ="Digite 2 letras para buscar usuários ativos"
                                           Items: |-
-                                            =UsuáriosdoOffice365.SearchUserV2(
-                                                {searchTerm: Self.SearchText}
-                                            ).value
+                                            =If(
+                                                Len(Trim(Self.SearchText)) < 1,
+                                                colUsuariosDemo,
+                                                Filter(
+                                                    colUsuariosDemo,
+                                                    StartsWith(DisplayName, Trim(Self.SearchText))
+                                                )
+                                            )
                                           LayoutMinHeight: =36
                                           LayoutMinWidth: =145
-                                          SearchFields: =["DisplayName","Mail"]
+                                          SearchFields: =["DisplayName"]
                                           SelectMultiple: =false
                                           Size: =12
                                           Width: =Parent.Width
@@ -624,7 +631,7 @@ Screens:
                                     - lbEstimatedReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -635,14 +642,14 @@ Screens:
                                     - txtEstimatedReg7V8:
                                         Control: Classic/TextInput@2.3.2
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
-                                          Color: =If(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)) = 0, RGBA(95,111,102,1), RGBA(11,47,35,1))
+                                          Color: =If(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)) = 0, RGBA(95,111,102,1), RGBA(21,32,51,1))
                                           Default: =If(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)) = 0, "Ex. 16", Text(Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0))))
                                           DisplayMode: =DisplayMode.View
                                           Fill: =RGBA(244,247,245,1)
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(201,214,206,1)
+                                          FocusedBorderColor: =RGBA(219,229,240,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           LayoutMinHeight: =36
@@ -666,7 +673,7 @@ Screens:
                                     - lbDueDateReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -677,16 +684,16 @@ Screens:
                                     - dtpDueDateReg7V8:
                                         Control: Classic/DatePicker@2.6.0
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
-                                          IconBackground: =RGBA(11,107,58,1)
+                                          IconBackground: =RGBA(46,102,168,1)
                                           IconFill: =RGBA(255,255,255,1)
                                           LayoutMinHeight: =36
                                           Size: =12
@@ -704,7 +711,7 @@ Screens:
                                     - lbPriorityReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
                                           Height: =18
@@ -714,16 +721,16 @@ Screens:
                                     - ddlPriorityReg7V8:
                                         Control: Classic/DropDown@2.3.1
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
                                           ChevronBackground: =RGBA(255,255,255,1)
-                                          ChevronFill: =RGBA(11,107,58,1)
-                                          Color: =Switch(ddlPriorityReg7V8.Selected.Value, "Alta", RGBA(180,35,24,1), "Crítica", RGBA(180,35,24,1), "Média", RGBA(138,90,0,1), "Baixa", RGBA(11,107,58,1), RGBA(11,47,35,1))
+                                          ChevronFill: =RGBA(46,102,168,1)
+                                          Color: =Switch(ddlPriorityReg7V8.Selected.Value, "Alta", RGBA(180,35,24,1), "Crítica", RGBA(180,35,24,1), "Média", RGBA(138,90,0,1), "Baixa", RGBA(46,102,168,1), RGBA(21,32,51,1))
                                           Default: ="Média"
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =Switch(ddlPriorityReg7V8.Selected.Value, "Alta", RGBA(251,218,218,1), "Crítica", RGBA(251,218,218,1), "Média", RGBA(252,239,199,1), "Baixa", RGBA(215,240,224,1), RGBA(255,255,255,1))
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           Items: =Table({Value:"Baixa"}, {Value:"Média"}, {Value:"Alta"}, {Value:"Crítica"})
@@ -745,7 +752,7 @@ Screens:
                               - lbV9VinculoRegistro:
                                   Control: Label@2.5.1
                                   Properties:
-                                    Color: =RGBA(11,47,35,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
                                     Height: =18
@@ -756,15 +763,15 @@ Screens:
                               - ddV9VinculoRegistro:
                                   Control: Classic/DropDown@2.3.1
                                   Properties:
-                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderColor: =RGBA(219,229,240,1)
                                     BorderThickness: =1
                                     ChevronBackground: =RGBA(255,255,255,1)
-                                    ChevronFill: =RGBA(11,107,58,1)
-                                    Color: =RGBA(11,47,35,1)
+                                    ChevronFill: =RGBA(46,102,168,1)
+                                    Color: =RGBA(21,32,51,1)
                                     Default: ="Nenhum vínculo"
                                     DisplayMode: =If(varSalvando,DisplayMode.Disabled,DisplayMode.Edit)
                                     Fill: =RGBA(255,255,255,1)
-                                    FocusedBorderColor: =RGBA(18,161,80,1)
+                                    FocusedBorderColor: =RGBA(34,193,238,1)
                                     Font: =Font.'Segoe UI'
                                     Height: =36
                                     Items: =colV9Opcoes
@@ -780,10 +787,10 @@ Screens:
                               BorderThickness: =1
                               Fill: =RGBA(244,247,245,1)
                               FillPortions: =0
-                              Height: =If(varExibirEntradaTarefa, 190, 128)
+                              Height: =Max(240, Min(320, Parent.Height * 0.35))
                               LayoutDirection: =LayoutDirection.Vertical
                               LayoutGap: =4
-                              LayoutMinHeight: =If(varExibirEntradaTarefa, 190, 128)
+                              LayoutMinHeight: =240
                               LayoutMinWidth: =300
                               PaddingBottom: =12
                               PaddingLeft: =12
@@ -809,7 +816,7 @@ Screens:
                                     - lbListaTarefasReg7V8:
                                         Control: Label@2.5.1
                                         Properties:
-                                          Color: =RGBA(0,73,43,1)
+                                          Color: =RGBA(21,32,51,1)
                                           FillPortions: =1
                                           Font: =Font.'Segoe UI'
                                           FontWeight: =FontWeight.Bold
@@ -819,7 +826,7 @@ Screens:
                                         Control: Label@2.5.1
                                         Properties:
                                           Align: =Align.Center
-                                          Color: =RGBA(0,158,89,1)
+                                          Color: =RGBA(34,193,238,1)
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           Font: =Font.'Segoe UI'
@@ -847,14 +854,14 @@ Screens:
                                     - txtTarefaTituloReg7V8:
                                         Control: Classic/TextInput@2.3.2
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Default: =""
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =4
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           HintText: ="Título da tarefa"
@@ -863,16 +870,16 @@ Screens:
                                     - ddlTarefaStatusReg7V8:
                                         Control: Classic/DropDown@2.3.1
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
                                           ChevronBackground: =RGBA(255,255,255,1)
-                                          ChevronFill: =RGBA(11,107,58,1)
-                                          Color: =RGBA(11,47,35,1)
+                                          ChevronFill: =RGBA(46,102,168,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Default: ="Backlog"
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =2
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           Items: =colStatus
@@ -882,14 +889,14 @@ Screens:
                                     - txtTarefaHorasReg7V8:
                                         Control: Classic/TextInput@2.3.2
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Default: =""
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =1
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Format: =TextFormat.Number
                                           Height: =36
@@ -899,18 +906,18 @@ Screens:
                                     - dtpTarefaPrazoReg7V8:
                                         Control: Classic/DatePicker@2.6.0
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
-                                          Color: =RGBA(11,47,35,1)
+                                          Color: =RGBA(21,32,51,1)
                                           DefaultDate: =Blank()
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =2
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Format: ="dd/mm/yyyy"
                                           Height: =36
-                                          IconBackground: =RGBA(11,107,58,1)
+                                          IconBackground: =RGBA(46,102,168,1)
                                           IconFill: =RGBA(255,255,255,1)
                                           InputTextPlaceholder: ="Selecionar data"
                                           LayoutMinWidth: =120
@@ -918,16 +925,16 @@ Screens:
                                     - ddlTarefaPrioridadeReg7V8:
                                         Control: Classic/DropDown@2.3.1
                                         Properties:
-                                          BorderColor: =RGBA(201,214,206,1)
+                                          BorderColor: =RGBA(219,229,240,1)
                                           BorderThickness: =1
                                           ChevronBackground: =RGBA(255,255,255,1)
-                                          ChevronFill: =RGBA(11,107,58,1)
-                                          Color: =RGBA(11,47,35,1)
+                                          ChevronFill: =RGBA(46,102,168,1)
+                                          Color: =RGBA(21,32,51,1)
                                           Default: ="Média"
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                           Fill: =RGBA(255,255,255,1)
                                           FillPortions: =2
-                                          FocusedBorderColor: =RGBA(18,161,80,1)
+                                          FocusedBorderColor: =RGBA(34,193,238,1)
                                           Font: =Font.'Segoe UI'
                                           Height: =36
                                           Items: =colPrioridade
@@ -939,7 +946,7 @@ Screens:
                                         Properties:
                                           Color: =RGBA(255,255,255,1)
                                           DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
-                                          Fill: =RGBA(18,161,80,1)
+                                          Fill: =RGBA(34,193,238,1)
                                           FillPortions: =1
                                           Height: =36
                                           LayoutMinWidth: =78
@@ -1027,9 +1034,7 @@ Screens:
                                   Variant: Vertical
                                   Properties:
                                     Items: =colTarefasTemp
-                                    LayoutMaxHeight: =
-                                    LayoutMaxWidth: =
-                                    LayoutMinHeight: =40
+                                    LayoutMinHeight: =96
                                     LayoutMinWidth: =250
                                     TemplatePadding: =2
                                     TemplateSize: =34
@@ -1110,43 +1115,25 @@ Screens:
                                     Align: =Align.Center
                                     Color: =RGBA(255,255,255,1)
                                     DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
-                                    Fill: =RGBA(18,161,80,1)
+                                    Fill: =RGBA(34,193,238,1)
                                     FillPortions: =3
                                     Font: =Font.'Segoe UI'
                                     FontWeight: =FontWeight.Bold
                                     Height: =36
                                     OnSelect: |
-                                      =
-                                      If(
+                                      =If(
                                           varSalvando <> true,
                                           If(
-                                              IsBlank(Trim(txtTituloReg7V8.Text)) ||
-                                              IsBlank(Trim(txtDescricaoReg7V8.Text)),
-                                              Notify(
-                                                  "Preencha o título e a descrição.",
-                                                  NotificationType.Warning
-                                              ),
+                                              IsBlank(Trim(txtTituloReg7V8.Text)) || IsBlank(Trim(txtDescricaoReg7V8.Text)),
+                                              Notify("Preencha o título e a descrição.", NotificationType.Warning),
                                               If(
-                                                  varExibirEntradaTarefa = true &&
-                                                  !IsBlank(Trim(txtTarefaTituloReg7V8.Text)),
-                                                  Notify(
-                                                      "Clique em Adicionar para incluir a tarefa antes de salvar.",
-                                                      NotificationType.Warning
-                                                  ),
+                                                  varExibirEntradaTarefa = true && !IsBlank(Trim(txtTarefaTituloReg7V8.Text)),
+                                                  Notify("Clique em Adicionar para incluir a tarefa antes de salvar.", NotificationType.Warning),
                                                   Set(varSalvando, true);
                                                   Set(varErroGravacao, Blank());
-
-                                                  ClearCollect(
-                                                      colFalhasTarefas,
-                                                      {TaskID: "", Mensagem: ""}
-                                                  );
+                                                  ClearCollect(colFalhasTarefas, {TaskID: "", Mensagem: ""});
                                                   Clear(colFalhasTarefas);
-
-                                                  If(
-                                                      IsBlank(varAtividadeID),
-                                                      Set(varAtividadeID, Text(GUID()))
-                                                  );
-
+                                                  If(IsBlank(varAtividadeID), Set(varAtividadeID, Text(GUID())));
                                                   If(
                                                       IsBlank(varRegistroSalvo),
                                                       IfError(
@@ -1155,10 +1142,7 @@ Screens:
                                                               Patch(
                                                                   tbAtividades,
                                                                   Coalesce(
-                                                                      LookUp(
-                                                                          tbAtividades,
-                                                                          AtividadeID = varAtividadeID
-                                                                      ),
+                                                                      LookUp(tbAtividades, AtividadeID = varAtividadeID),
                                                                       Defaults(tbAtividades)
                                                                   ),
                                                                   {
@@ -1167,15 +1151,8 @@ Screens:
                                                                       Descricao: Trim(txtDescricaoReg7V8.Text),
                                                                       Status: radStatusReg7V8.Selected.Value,
                                                                       Complexidade: ddlComplexidadeReg7V8.Selected.Value,
-                                                                      Assigned: If(
-                                                                          IsBlank(cmbAssignedReg7V8.Selected.DisplayName),
-                                                                          "",
-                                                                          cmbAssignedReg7V8.Selected.DisplayName
-                                                                      ),
-                                                                      EstimatedHoras: Sum(
-                                                                          colTarefasTemp,
-                                                                          Coalesce(EstimatedHoras, 0)
-                                                                      ),
+                                                                      Assigned: If(IsBlank(cmbAssignedReg7V8.Selected.DisplayName), "", cmbAssignedReg7V8.Selected.DisplayName),
+                                                                      EstimatedHoras: Sum(colTarefasTemp, Coalesce(EstimatedHoras, 0)),
                                                                       VinculoID: ddV9VinculoRegistro.Selected.ID,
                                                                       DueDate: dtpDueDateReg7V8.SelectedDate,
                                                                       Priority: ddlPriorityReg7V8.Selected.Value,
@@ -1188,20 +1165,15 @@ Screens:
                                                           Set(varErroGravacao, FirstError.Message)
                                                       )
                                                   );
-
                                                   If(
-                                                      IsBlank(varErroGravacao) &&
-                                                      !IsBlank(varRegistroSalvo),
+                                                      IsBlank(varErroGravacao) && !IsBlank(varRegistroSalvo),
                                                       ForAll(
                                                           colTarefasTemp As t,
                                                           IfError(
                                                               Patch(
                                                                   tbTarefas,
                                                                   Coalesce(
-                                                                      LookUp(
-                                                                          tbTarefas,
-                                                                          TaskID = t.TaskID
-                                                                      ),
+                                                                      LookUp(tbTarefas, TaskID = t.TaskID),
                                                                       Defaults(tbTarefas)
                                                                   ),
                                                                   {
@@ -1212,38 +1184,26 @@ Screens:
                                                                       EstimatedHoras: t.EstimatedHoras,
                                                                       DueDate: t.DueDate,
                                                                       Priority: t.Priority,
-                                                                      Assigned: If(
-                                                                          IsBlank(cmbAssignedReg7V8.Selected.DisplayName),
-                                                                          "",
-                                                                          cmbAssignedReg7V8.Selected.DisplayName
-                                                                      ),
+                                                                      Assigned: If(IsBlank(cmbAssignedReg7V8.Selected.DisplayName), "", cmbAssignedReg7V8.Selected.DisplayName),
                                                                       CriadoEm: Now(),
                                                                       AtualizadoEm: Now()
                                                                   }
                                                               ),
                                                               Collect(
                                                                   colFalhasTarefas,
-                                                                  {
-                                                                      TaskID: t.TaskID,
-                                                                      Mensagem: FirstError.Message
-                                                                  }
+                                                                  {TaskID: t.TaskID, Mensagem: FirstError.Message}
                                                               );
                                                               Blank()
                                                           )
                                                       )
                                                   );
-
                                                   If(
                                                       !IsBlank(varErroGravacao),
-                                                      Notify(
-                                                          "Erro ao salvar atividade: " & varErroGravacao,
-                                                          NotificationType.Error
-                                                      ),
+                                                      Notify("Erro ao salvar atividade: " & varErroGravacao, NotificationType.Error),
                                                       If(
                                                           CountRows(colFalhasTarefas) > 0,
                                                           Notify(
-                                                              "Atividade gravada, mas " &
-                                                              CountRows(colFalhasTarefas) &
+                                                              "Atividade gravada, mas " & CountRows(colFalhasTarefas) &
                                                               " tarefa(s) falharam. Verifique o Excel e tente Salvar novamente. Não clique em Cancelar.",
                                                               NotificationType.Error
                                                           ),
@@ -1260,30 +1220,16 @@ Screens:
                                                           Reset(txtTarefaHorasReg7V8);
                                                           Reset(dtpTarefaPrazoReg7V8);
                                                           Reset(ddlTarefaPrioridadeReg7V8);
-
                                                           Clear(colTarefasTemp);
                                                           Set(varExibirEntradaTarefa, false);
-
                                                           Refresh(tbAtividades);
                                                           ClearCollect(colRecentesLive, tbAtividades);
-
                                                           If(
-                                                              IsBlank(
-                                                                  LookUp(
-                                                                      colRecentesLive,
-                                                                      AtividadeID = varRegistroSalvo.AtividadeID
-                                                                  )
-                                                              ),
-                                                              Collect(
-                                                                  colRecentesLive,
-                                                                  varRegistroSalvo
-                                                              )
+                                                              IsBlank(LookUp(colRecentesLive, AtividadeID = varRegistroSalvo.AtividadeID)),
+                                                              Collect(colRecentesLive, varRegistroSalvo)
                                                           );
-
                                                           Refresh(tbTarefas);
-
                                                           Set(varErroLog, Blank());
-
                                                           IfError(
                                                               Patch(
                                                                   tbLogAtividades,
@@ -1303,28 +1249,12 @@ Screens:
                                                               ),
                                                               Set(varErroLog, FirstError.Message)
                                                           );
-
-                                                          If(
-                                                              !IsBlank(varErroLog),
-                                                              Notify(
-                                                                  "Atividade salva, mas o log falhou: " &
-                                                                  varErroLog,
-                                                                  NotificationType.Warning
-                                                              )
-                                                          );
-
+                                                          If(!IsBlank(varErroLog), Notify("Atividade salva, mas o log falhou: " & varErroLog, NotificationType.Warning));
                                                           Set(varAtividadeID, Blank());
                                                           Set(varRegistroSalvo, Blank());
-
-                                                          Set(varListaTarefasExpandida, false);
-
-                                                          Notify(
-                                                              "Atividade e tarefas salvas com sucesso.",
-                                                              NotificationType.Success
-                                                          )
+                                                          Notify("Atividade e tarefas salvas com sucesso.", NotificationType.Success)
                                                       )
                                                   );
-
                                                   Set(varSalvando, false)
                                               )
                                           )
@@ -1335,9 +1265,9 @@ Screens:
                                   Control: Label@2.5.1
                                   Properties:
                                     Align: =Align.Center
-                                    BorderColor: =RGBA(201,214,206,1)
+                                    BorderColor: =RGBA(219,229,240,1)
                                     BorderThickness: =1
-                                    Color: =RGBA(11,107,58,1)
+                                    Color: =RGBA(46,102,168,1)
                                     DisplayMode: =If(varSalvando = true, DisplayMode.Disabled, DisplayMode.Edit)
                                     Fill: =RGBA(255,255,255,1)
                                     FillPortions: =2
